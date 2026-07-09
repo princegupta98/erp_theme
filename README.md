@@ -1,6 +1,6 @@
-### Custom hrms theme
+### custom_ui frappe app
 
-sd
+custom theme for frappe desk with theme selector 
 
 ### Installation
 
@@ -8,7 +8,7 @@ You can install this app using the [bench](https://github.com/frappe/bench) CLI:
 
 ```bash
 cd $PATH_TO_YOUR_BENCH
-bench get-app $URL_OF_THIS_REPO --branch version-16
+bench get-app https://github.com/princegupta98/erp_theme.git
 bench install-app custom_ui
 ```
 

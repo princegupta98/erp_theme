@@ -17,3 +17,11 @@
 	transform: translateY(-2px);
 	box-shadow: var(--card-shadow-hover) !important;
 }
+
+.widget.dashboard-widget-box .chart-loading-state {
+    background-color: var(--subtle-accent);
+}
+
+.frappe-menu {
+    background: var(--surface-modal);
+}

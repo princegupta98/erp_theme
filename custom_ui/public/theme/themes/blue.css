@@ -9,6 +9,9 @@
 	--text-primary: #f8fafc;
 	--text-secondary: #94a3b8;
 
+	--subtle-accent: #20344f; /*dboard loading bg color*/
+	--surface-modal: #162235; /*cntext menu*/
+
 	/* Map custom variables to standard Frappe CSS variables */
 	--bg-color: var(--surface-page);
 	--fg-color: var(--surface-sidebar);

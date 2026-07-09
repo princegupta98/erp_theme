@@ -1,0 +1,4 @@
+html[data-theme="light"] {
+	--card-shadow: var(--shadow-light-lg);
+	--card-shadow-hover: var(--shadow-light-hover);
+}

@@ -1,0 +1,37 @@
+/* html[data-theme="dark"] {
+	--surface-page: #020817;
+	--surface-sidebar: #0f172a;	
+	--surface-card: #111827;
+	--surface-input: #1e293b;
+	--surface-hover: #273449;
+	--border: #334155;
+	--primary: #2563eb;
+	--text-primary: #f8fafc;
+	--text-secondary: #94a3b8; */
+
+	/* Map custom variables to standard Frappe CSS variables */
+	/* --bg-color: var(--surface-page);
+	--fg-color: var(--surface-sidebar);
+	--surface-menu-bar: var(--surface-sidebar);
+	--navbar-bg: var(--surface-sidebar);
+	--card-bg: var(--surface-card);
+	--control-bg: var(--surface-input);
+	--control-bg-on-gray: var(--surface-input);
+	--border-color: var(--border);
+	--primary-color: var(--primary);
+	--text-color: var(--text-primary);
+	--heading-color: var(--text-primary);
+	--text-muted: var(--text-secondary);
+	--text-light: var(--text-secondary);
+	--fg-hover-color: var(--surface-hover);
+	--sidebar-select-color: var(--surface-hover);
+	--btn-default-bg: var(--surface-input);
+	--btn-default-hover-bg: var(--surface-hover);
+	--awesomebar-focus-bg: var(--surface-hover);
+	--modal-bg: var(--surface-card);
+	--toast-bg: var(--surface-card);
+	--scrollbar-thumb-color: var(--border);
+	--scrollbar-track-color: var(--surface-page);
+	--card-shadow: var(--shadow-dark-lg);
+	--card-shadow-hover: var(--shadow-dark-hover);
+} */

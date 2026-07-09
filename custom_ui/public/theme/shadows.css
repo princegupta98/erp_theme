@@ -1,0 +1,19 @@
+:root {
+	--shadow-none: none;
+	
+	/* Soft, modern shadows with tinting for light mode */
+	--shadow-light-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+	--shadow-light-md: 0 4px 12px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.02);
+	--shadow-light-lg: 0 10px 30px -10px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.03);
+	--shadow-light-hover: 0 20px 40px -15px rgba(0, 0, 0, 0.12), 0 1px 5px rgba(0, 0, 0, 0.04);
+
+	/* Deep shadows for dark mode depth */
+	--shadow-dark-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+	--shadow-dark-md: 0 4px 12px rgba(0, 0, 0, 0.4), 0 1px 3px rgba(0, 0, 0, 0.2);
+	--shadow-dark-lg: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 1px 3px rgba(0, 0, 0, 0.25);
+	--shadow-dark-hover: 0 20px 40px -15px rgba(0, 0, 0, 0.7), 0 1px 5px rgba(0, 0, 0, 0.3);
+
+	/* Default mappings */
+	--card-shadow: var(--shadow-light-lg);
+	--card-shadow-hover: var(--shadow-light-hover);
+}

@@ -1,0 +1,9 @@
+[data-theme-mode="orange"] {
+	/* Sunset Orange Accents */
+	--primary: #ea580c;
+	--primary-color: var(--primary);
+
+	/* Premium Card Shadows for Light Mode base */
+	--card-shadow: var(--shadow-light-lg);
+	--card-shadow-hover: var(--shadow-light-hover);
+}

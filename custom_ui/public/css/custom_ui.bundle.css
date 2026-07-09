@@ -1,0 +1,19 @@
+/* theming */
+/* wrt worin dir to reso build scss */
+
+/* add */
+@import "../custom_ui/custom_ui/public/theme/variables.css";
+@import "../custom_ui/custom_ui/public/theme/typography.css";
+@import "../custom_ui/custom_ui/public/theme/spacing.css";
+@import "../custom_ui/custom_ui/public/theme/shadows.css";
+
+/* theme */
+@import "../custom_ui/custom_ui/public/theme/themes/dark.css";
+@import "../custom_ui/custom_ui/public/theme/themes/light.css";
+@import "../custom_ui/custom_ui/public/theme/themes/blue.css";
+@import "../custom_ui/custom_ui/public/theme/themes/orange.css";
+@import "../custom_ui/custom_ui/public/theme/themes/brown.css";
+
+/* components */
+@import "../custom_ui/custom_ui/public/components/inputs.css";
+@import "../custom_ui/custom_ui/public/components/cards.css";

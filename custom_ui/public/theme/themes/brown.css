@@ -1,0 +1,9 @@
+[data-theme-mode="brown"] {
+	/* Coffee Brown Accents */
+	--primary: #a16207;
+	--primary-color: var(--primary);
+
+	/* Premium Card Shadows for Dark Mode base */
+	--card-shadow: var(--shadow-dark-lg);
+	--card-shadow-hover: var(--shadow-dark-hover);
+}

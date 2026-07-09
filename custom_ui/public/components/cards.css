@@ -1,0 +1,19 @@
+/* Card and widget styling */
+.widget,
+.number-widget-box,
+.shortcut-widget-box,
+.chart-widget-box,
+.widget-group .widget {
+	border: 1px solid var(--border-color) !important;
+	box-shadow: var(--card-shadow) !important;
+	border-radius: var(--radius-md) !important;
+	transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.widget:hover,
+.number-widget-box:hover,
+.shortcut-widget-box:hover,
+.chart-widget-box:hover {
+	transform: translateY(-2px);
+	box-shadow: var(--card-shadow-hover) !important;
+}

@@ -1,0 +1,6 @@
+.form-control {
+	background: var(--surface-input);
+	color: var(--text-primary);
+	border: 1px solid var(--border);
+	border-radius: var(--radius-md);
+}

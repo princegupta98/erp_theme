@@ -1,9 +1,51 @@
 [data-theme-mode="orange"] {
-	/* Sunset Orange Accents */
-	--primary: #ea580c;
-	--primary-color: var(--primary);
+    /* Pure plain white background */
+    --surface-page: #FFFFFF;
+    /* Beautiful ultra-light sage/mint green for the sidebar */
+    --surface-sidebar: #F4F7F5; 
+    /* Bold, rich olive green for your main content boxes/cards */
+    --surface-card: #beee6b; 
+    /* Clean white inputs inside the cards for clear typing */
+    --surface-input: #FFFFFF; 
+    /* Soft pastel mint-sage for general hover states */
+    --surface-hover: #206734; 
+    /* Subtle warm olive border to outline structural elements */
+    --border: #000000; 
+    /* Deep forest green for primary action elements */
+    --primary: #2E401A; 
+    /* Crisp white text so it stands out flawlessly inside the olive boxes */
+    --text-primary: #000000; 
+    /* Soft light-mint text for secondary details inside the boxes */
+    --text-secondary: #000000; 
 
-	/* Premium Card Shadows for Light Mode base */
-	--card-shadow: var(--shadow-light-lg);
-	--card-shadow-hover: var(--shadow-light-hover);
+    --subtle-accent: #EBF2ED; /* Dashboard loading bg color */
+    --surface-modal: #FFFFFF; /* Context menu/modals stay clean white */
+
+    /* Map custom variables to standard Frappe CSS variables */
+    --bg-color: var(--surface-page);
+    --fg-color: var(--surface-sidebar);
+    --surface-menu-bar: var(--surface-sidebar);
+    --navbar-bg: var(--surface-sidebar);
+    --card-bg: var(--surface-card);
+    --control-bg: var(--surface-input);
+    --control-bg-on-gray: var(--surface-input);
+    --border-color: var(--border);
+    --primary-color: var(--primary);
+    --text-color: var(--text-primary);
+    --heading-color: var(--text-primary);
+    --text-muted: var(--text-secondary);
+    --text-light: var(--text-secondary);
+    --fg-hover-color: var(--surface-hover);
+    --sidebar-select-color: var(--surface-hover);
+    --btn-default-bg: var(--surface-input);
+    --btn-default-hover-bg: var(--surface-hover);
+    --awesomebar-focus-bg: var(--surface-hover);
+    --modal-bg: var(--surface-modal);
+    --toast-bg: var(--surface-card);
+    --scrollbar-thumb-color: var(--border);
+    --scrollbar-track-color: var(--surface-page);
+    
+    /* Modern, smooth shadows designed to lift the olive boxes off the white page using a subtle green depth tint */
+    --card-shadow: 0 6px 16px rgba(85, 107, 47, 0.12), 0 2px 4px rgba(0, 0, 0, 0.04);
+    --card-shadow-hover: 0 16px 32px rgba(85, 107, 47, 0.2), 0 4px 8px rgba(0, 0, 0, 0.06);
 }

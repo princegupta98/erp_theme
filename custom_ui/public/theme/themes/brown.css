@@ -1,16 +1,16 @@
 [data-theme-mode="brown"] {
 	--surface-page: #FAF6F0;
-	--surface-sidebar: #3E2723;
+	--surface-sidebar: #ffffff;
 	--surface-card: #b58858;
 	--surface-input: #FFFFFF;
-	--surface-hover: #F4ECE1;
-	--border: #D7CCC8;
+	--surface-hover: #5e3700;
+	--border: #000000;
 	--primary: #8B5A2B;
 	--text-primary: #3E2723;
 	--text-secondary: #5d3d33;
 
 	--subtle-accent: #F4ECE1; /*dboard loading bg color*/
-	--surface-modal: #FAF6F0; /*cntext menu*/
+	--surface-modal: #000000; /*cntext menu*/
 
 	/* Map custom variables to standard Frappe CSS variables */
 	--bg-color: var(--surface-page);

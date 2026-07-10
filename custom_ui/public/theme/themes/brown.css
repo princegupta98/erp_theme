@@ -1,9 +1,40 @@
 [data-theme-mode="brown"] {
-	/* Coffee Brown Accents */
-	--primary: #a16207;
-	--primary-color: var(--primary);
+	--surface-page: #FAF6F0;
+	--surface-sidebar: #3E2723;
+	--surface-card: #b58858;
+	--surface-input: #FFFFFF;
+	--surface-hover: #F4ECE1;
+	--border: #D7CCC8;
+	--primary: #8B5A2B;
+	--text-primary: #3E2723;
+	--text-secondary: #5d3d33;
 
-	/* Premium Card Shadows for Dark Mode base */
-	--card-shadow: var(--shadow-dark-lg);
-	--card-shadow-hover: var(--shadow-dark-hover);
+	--subtle-accent: #F4ECE1; /*dboard loading bg color*/
+	--surface-modal: #FAF6F0; /*cntext menu*/
+
+	/* Map custom variables to standard Frappe CSS variables */
+	--bg-color: var(--surface-page);
+	--fg-color: var(--surface-sidebar);
+	--surface-menu-bar: var(--surface-sidebar);
+	--navbar-bg: var(--surface-sidebar);
+	--card-bg: var(--surface-card);
+	--control-bg: var(--surface-input);
+	--control-bg-on-gray: var(--surface-input);
+	--border-color: var(--border);
+	--primary-color: var(--primary);
+	--text-color: var(--text-primary);
+	--heading-color: var(--text-primary);
+	--text-muted: var(--text-secondary);
+	--text-light: var(--text-secondary);
+	--fg-hover-color: var(--surface-hover);
+	--sidebar-select-color: var(--surface-hover);
+	--btn-default-bg: var(--surface-input);
+	--btn-default-hover-bg: var(--surface-hover);
+	--awesomebar-focus-bg: var(--surface-hover);
+	--modal-bg: var(--surface-card);
+	--toast-bg: var(--surface-card);
+	--scrollbar-thumb-color: var(--border);
+	--scrollbar-track-color: var(--surface-page);
+	--card-shadow: var(--shadow-light-lg);
+	--card-shadow-hover: var(--shadow-light-hover);
 }

@@ -22,6 +22,11 @@ frappe.ui.ThemeSwitcher = class extends OriginalThemeSwitcher {
 				label: __("Coffee Brown"),
 				info: __("Brown Theme"),
 			},
+			{
+				name: "sky",
+				label: __("Sky Blue"),
+				info: __("Sky Blue Theme"),
+			},
 		);
 	}
 
@@ -30,6 +35,7 @@ frappe.ui.ThemeSwitcher = class extends OriginalThemeSwitcher {
 			blue: "dark",
 			orange: "light",
 			brown: "dark",
+			sky:"light",
 		};
 
 		const is_auto_theme = theme.name === "automatic";
@@ -87,6 +93,7 @@ frappe.ui.ThemeSwitcher = class extends OriginalThemeSwitcher {
 			blue: "dark",
 			orange: "light",
 			brown: "dark",
+			sky:"light",
 		};
 
 		if (theme in custom_themes) {

@@ -1,0 +1,411 @@
+[data-theme-mode="sky"] {
+	--surface-page: #dcecff;
+	--surface-sidebar: #ffffff;
+	--surface-card: #ffffff;
+	--surface-input: #ffffff;
+	--surface-hover: #d7e9ff;
+	--border: #e2e8f0;
+	--primary: #2f5fb8;
+	--text-primary: #1e293b;
+	--text-secondary: #64748b;
+
+	--subtle-accent: #eaf3fc; /* dashboard loading bg color */
+	--surface-modal: #ffffff; /* context menu / modals */
+
+	/* Map custom variables to standard Frappe CSS variables */
+	--bg-color: var(--surface-page);
+	--fg-color: var(--surface-sidebar);
+	--surface-menu-bar: var(--surface-sidebar);
+	--navbar-bg: var(--surface-sidebar);
+	--card-bg: var(--surface-card);
+	--control-bg: var(--surface-input);
+	--control-bg-on-gray: var(--surface-input);
+	--border-color: var(--border);
+	--primary-color: var(--primary);
+	--text-color: var(--text-primary);
+	--heading-color: var(--text-primary);
+	--text-muted: var(--text-secondary);
+	--text-light: var(--text-secondary);
+	--fg-hover-color: var(--surface-hover);
+	--sidebar-select-color: #b8d5ff;
+	--btn-default-bg: var(--surface-input);
+	--btn-default-hover-bg: var(--surface-hover);
+	--awesomebar-focus-bg: var(--surface-hover);
+	--modal-bg: var(--surface-modal);
+	--toast-bg: var(--surface-card);
+	--scrollbar-thumb-color: #c7d8ef;
+	--scrollbar-track-color: var(--surface-page);
+	--card-shadow: var(--shadow-light-lg);
+	--card-shadow-hover: var(--shadow-light-hover);
+}
+
+/* Soft gradient wash on the main workspace, like the reference screenshot */
+[data-theme-mode="sky"] .content,
+[data-theme-mode="sky"] .desk-body,
+[data-theme-mode="sky"] .page-content {
+	background: linear-gradient(180deg,#f7fbff 0%,#dfefff 40%,#c9e2ff 100%) !important;
+}
+
+/* -------------------------------------------------------------------- */
+/* HRMS module sidebar (.body-sidebar) — verified against actual DOM    */
+/* -------------------------------------------------------------------- */
+
+[data-theme-mode="sky"] .body-sidebar {
+	background-color: var(--surface-sidebar);
+	border-right: 1px solid var(--border);
+}
+
+/* Module header (logo + title/subtitle at top, e.g. "Recruitment / Frappe HR") */
+[data-theme-mode="sky"] .body-sidebar .sidebar-header .header-title {
+	color: var(--text-primary);
+}
+[data-theme-mode="sky"] .body-sidebar .sidebar-header .header-subtitle {
+	color: var(--text-secondary);
+}
+[data-theme-mode="sky"] .body-sidebar .sidebar-header > .sidebar-item-icon {
+	background-color: var(--sidebar-select-color);
+	border-radius: var(--radius-sm);
+}
+
+/* Default item label + icon color.
+   NOTE: icons render as <svg stroke="currentColor" class="... text-ink-gray-7">
+   so "currentColor" resolves from the CSS `color` property, not `stroke`.
+   We set both `color` and `stroke` here to cover it either way. */
+[data-theme-mode="sky"] .body-sidebar .sidebar-item-label,
+[data-theme-mode="sky"] .body-sidebar .sidebar-item-suffix {
+	color: var(--text-secondary);
+}
+[data-theme-mode="sky"] .body-sidebar .sidebar-item-icon svg.text-ink-gray-7,
+[data-theme-mode="sky"] .body-sidebar .sidebar-item-icon svg.text-ink-gray-7 use {
+	color: var(--text-secondary);
+	stroke: var(--text-secondary);
+}
+
+/* Hover state */
+[data-theme-mode="sky"] .body-sidebar .standard-sidebar-item:hover {
+	background-color: var(--surface-hover);
+	border-radius: var(--radius-sm);
+}
+
+/* Active / selected item — real class is `.active-sidebar` on `.standard-sidebar-item`,
+   confirmed from live markup (NOT `.selected`, which doesn't exist in v16). */
+[data-theme-mode="sky"] .body-sidebar .standard-sidebar-item.active-sidebar {
+	background-color: var(--sidebar-select-color);
+	border-radius: var(--radius-sm);
+}
+[data-theme-mode="sky"] .body-sidebar .standard-sidebar-item.active-sidebar .sidebar-item-label {
+	color: var(--primary);
+	font-weight: 500;
+}
+[data-theme-mode="sky"] .body-sidebar .standard-sidebar-item.active-sidebar .sidebar-item-icon svg.text-ink-gray-7,
+[data-theme-mode="sky"] .body-sidebar .standard-sidebar-item.active-sidebar .sidebar-item-icon svg.text-ink-gray-7 use {
+	color: var(--primary);
+	stroke: var(--primary);
+}
+
+/* Section headers (Planning, Reports, Setup ...) — `.section-item > .standard-sidebar-item.indent` */
+[data-theme-mode="sky"] .body-sidebar .section-item > .standard-sidebar-item .sidebar-item-label {
+	color: var(--text-primary);
+	font-weight: 500;
+}
+
+/* Collapse chevron (drop-icon) — Frappe sets stroke="#7c7c7c" as an inline SVG attribute
+   via JS, which beats a plain CSS selector, so this needs !important to win. */
+[data-theme-mode="sky"] .body-sidebar .sidebar-item-control .drop-icon svg,
+[data-theme-mode="sky"] .body-sidebar .sidebar-item-control .drop-icon svg use {
+	stroke: var(--text-secondary) !important;
+}
+
+/* Drag handle / "..." settings button, shown only in edit mode */
+[data-theme-mode="sky"] .body-sidebar .sidebar-item-edit-controls .setting-btn,
+[data-theme-mode="sky"] .body-sidebar .sidebar-item-edit-controls .drag-handle {
+	background-color: var(--surface-input);
+	border: 1px solid var(--border);
+}
+
+/* Nested / child items — indented under a collapsible section */
+[data-theme-mode="sky"] .body-sidebar .sidebar-child-item.nested-container {
+	border-left: 1px solid var(--border);
+	margin-left: 12px;
+}
+
+/* Search + Notification quick links at the top */
+[data-theme-mode="sky"] .body-sidebar .navbar-search-bar .keyboard-shortcut {
+	background-color: var(--surface-hover);
+	color: var(--text-secondary);
+	border-radius: var(--radius-xs);
+}
+
+/* Bottom user card (avatar, name, email) */
+[data-theme-mode="sky"] .body-sidebar .sidebar-user-button {
+	border-top: 1px solid var(--border);
+}
+[data-theme-mode="sky"] .body-sidebar .avatar-name-email .text-secondary {
+	color: var(--text-secondary) !important;
+}
+
+/* Collapse/expand toggle + resize handle at the sidebar edge */
+[data-theme-mode="sky"] .body-sidebar .sidebar-toggle-btn {
+	background-color: var(--surface-card);
+	border: 1px solid var(--border);
+	color: var(--text-secondary);
+}
+[data-theme-mode="sky"] .body-sidebar .sidebar-resize-handle:hover {
+	background-color: var(--primary);
+	opacity: 0.3;
+}
+
+/* Sidebar's own scrollbar */
+[data-theme-mode="sky"] .body-sidebar ::-webkit-scrollbar-thumb {
+	background-color: var(--scrollbar-thumb-color);
+	border-radius: var(--radius-sm);
+}
+[data-theme-mode="sky"] .body-sidebar ::-webkit-scrollbar-track {
+	background-color: var(--scrollbar-track-color);
+}
+/* ==========================================================================
+   SKY SIDEBAR
+   ========================================================================== */
+
+html[data-theme-mode="sky"] .body-sidebar {
+
+	background: linear-gradient(
+    180deg,
+    #edf6ff 0%,
+    #d7eaff 35%,
+    #bddcff 70%,
+    #9fc8ff 100%
+) !important;
+
+	border-right: 1px solid #dce8f5;
+
+	box-shadow: 8px 0 30px rgba(47,111,237,.08);
+
+}
+
+/* ==========================================================================
+   SIDEBAR ITEMS
+   ========================================================================== */
+
+html[data-theme-mode="sky"] .standard-sidebar-item {
+
+	margin: 4px 10px;
+
+	border-radius: 12px;
+
+	color: #64748b;
+
+	transition: .25s ease;
+
+}
+
+html[data-theme-mode="sky"] .standard-sidebar-item:hover {
+
+	background: #d8eaff !important;
+
+	color: #2f6fed !important;
+
+}
+
+/* ==========================================================================
+   ACTIVE ITEM
+   ========================================================================== */
+
+html[data-theme-mode="sky"] .standard-sidebar-item.active-sidebar {
+
+	background: linear-gradient(
+    180deg,
+    #4d8cf5,
+    #2f5fb8
+) !important;
+
+	box-shadow: 0 8px 20px rgba(47,111,237,.28);
+
+	border-radius: 12px;
+
+}
+
+html[data-theme-mode="sky"] .standard-sidebar-item.active-sidebar .sidebar-item-label {
+
+	color: white !important;
+
+	font-weight: 600;
+
+}
+
+html[data-theme-mode="sky"] .standard-sidebar-item.active-sidebar svg {
+
+	stroke: white !important;
+
+}
+
+/* ==========================================================================
+   ICONS
+   ========================================================================== */
+
+html[data-theme-mode="sky"] .standard-sidebar-item svg {
+
+	stroke: #64748b;
+
+	transition: .25s;
+
+}
+
+html[data-theme-mode="sky"] .standard-sidebar-item:hover svg {
+
+	stroke: #2f6fed;
+
+}
+
+/* ==========================================================================
+   CHILD MENU
+   ========================================================================== */
+
+html[data-theme-mode="sky"] .sidebar-child-item {
+
+	border-radius: 10px;
+
+	color: #64748b;
+
+	transition: .25s;
+
+}
+
+html[data-theme-mode="sky"] .sidebar-child-item:hover {
+
+	background: #edf5ff;
+
+	color: #2f6fed;
+
+}
+
+html[data-theme-mode="sky"] .sidebar-child-item.active-sidebar {
+
+	background: #dbeafe;
+
+	color: #2f6fed;
+
+	font-weight: 600;
+
+}
+
+/* ==========================================================================
+   HEADER
+   ========================================================================== */
+
+html[data-theme-mode="sky"] .sidebar-header {
+
+	background: transparent;
+
+}
+
+html[data-theme-mode="sky"] .sidebar-header .header-title {
+
+	color: #1e293b;
+
+	font-weight: 700;
+
+}
+
+html[data-theme-mode="sky"] .sidebar-header .header-subtitle {
+
+	color: #64748b;
+
+}
+
+/* ==========================================================================
+   USER
+   ========================================================================== */
+
+html[data-theme-mode="sky"] .sidebar-user-button {
+
+	border-radius: 14px;
+
+	transition: .25s;
+
+}
+
+html[data-theme-mode="sky"] .sidebar-user-button:hover {
+
+	background: #edf5ff;
+
+}
+
+/* ==========================================================================
+   SCROLLBAR
+   ========================================================================== */
+
+html[data-theme-mode="sky"] .body-sidebar::-webkit-scrollbar {
+
+	width: 8px;
+
+}
+
+html[data-theme-mode="sky"] .body-sidebar::-webkit-scrollbar-thumb {
+
+	background: #bfd4ef;
+
+	border-radius: 20px;
+
+}
+
+html[data-theme-mode="sky"] .card,
+html[data-theme-mode="sky"] .widget,
+html[data-theme-mode="sky"] .dashboard-widget {
+	background: #fdfefe;
+	border: 1px solid #cfe2fb;
+}
+
+/* ==========================================================================
+   PRIMARY BUTTONS
+   ========================================================================== */
+
+html[data-theme-mode="sky"] .btn-primary,
+html[data-theme-mode="sky"] .btn.btn-primary,
+html[data-theme-mode="sky"] button.btn-primary,
+html[data-theme-mode="sky"] .page-actions .btn-primary,
+html[data-theme-mode="sky"] .page-form .btn-primary,
+html[data-theme-mode="sky"] .primary-action,
+html[data-theme-mode="sky"] .btn-primary:not(:disabled) {
+
+	background: linear-gradient(
+		180deg,
+		#5f9eff 0%,
+		#3a67c2 100%
+	) !important;
+
+	border: 1px solid #2f5fb8 !important;
+
+	color: #ffffff !important;
+
+	box-shadow: 0 8px 20px rgba(58, 103, 194, 0.25);
+
+	transition: all .25s ease;
+
+}
+
+html[data-theme-mode="sky"] .btn-primary:hover,
+html[data-theme-mode="sky"] .btn.btn-primary:hover,
+html[data-theme-mode="sky"] .primary-action:hover {
+
+	background: linear-gradient(
+		180deg,
+		#6cabff 0%,
+		#4a78d8 100%
+	) !important;
+
+	border-color: #3a67c2 !important;
+
+	box-shadow: 0 12px 24px rgba(58, 103, 194, 0.35);
+
+}
+
+html[data-theme-mode="sky"] .btn-primary:active,
+html[data-theme-mode="sky"] .primary-action:active {
+
+	background: #2f5fb8 !important;
+
+	border-color: #2f5fb8 !important;
+
+}
+

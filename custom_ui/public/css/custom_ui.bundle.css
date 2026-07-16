@@ -13,6 +13,7 @@
 @import "../custom_ui/custom_ui/public/theme/themes/blue.css";
 @import "../custom_ui/custom_ui/public/theme/themes/orange.css";
 @import "../custom_ui/custom_ui/public/theme/themes/brown.css";
+@import "../custom_ui/custom_ui/public/theme/themes/sky.css";
 
 /* components */
 @import "../custom_ui/custom_ui/public/components/inputs.css";

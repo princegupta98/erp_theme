@@ -13,7 +13,8 @@
 @import "../custom_ui/custom_ui/public/theme/themes/blue.css";
 @import "../custom_ui/custom_ui/public/theme/themes/orange.css";
 @import "../custom_ui/custom_ui/public/theme/themes/brown.css";
-
+@import "../custom_ui/custom_ui/public/theme/themes/peach.css";
+@import "../custom_ui/custom_ui/public/theme/themes/purple.css";
 /* components */
 @import "../custom_ui/custom_ui/public/components/inputs.css";
 @import "../custom_ui/custom_ui/public/components/cards.css";

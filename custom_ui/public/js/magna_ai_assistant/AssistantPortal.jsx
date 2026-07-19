@@ -5,24 +5,27 @@ import Sidebar from './Sidebar';
 import BentoWelcome from './BentoWelcome';
 import ChatArea from './ChatArea';
 
-// Premium Lucide-React Microphone Icon Asset rendered as a pure React SVG
-const MicIcon = () => (
+const MicIcon = ({ isListening }) => (
     <svg 
         xmlns="http://www.w3.org/2000/svg" 
-        width="18" 
-        height="18" 
+        width="15" 
+        height="15" 
         viewBox="0 0 24 24" 
         fill="none" 
-        stroke="#0f172a" // Crisp execution black color
-        strokeWidth="2" 
+        stroke={isListening ? "#ef4444" : "#0f172a"} 
+        strokeWidth="2.2" 
         strokeLinecap="round" 
         strokeLinejoin="round"
-        style={{ display: 'block' }}
+        style={{ display: 'block', transition: 'stroke 0.2s ease' }}
     >
         <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z" />
         <path d="M19 10v1a7 7 0 0 1-14 0v-1" />
         <line x1="12" x2="12" y1="19" y2="22" />
     </svg>
+);
+
+const CloseIcon = () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#64748b" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
 );
 
 export default function AssistantPortal({ isOpen, onClose }) {
@@ -45,7 +48,6 @@ export default function AssistantPortal({ isOpen, onClose }) {
     const activeChat = chatHistory.find(c => c.id === currentChatId);
     const activeMessages = activeChat ? activeChat.messages : messages;
 
-    // Premium Web Audio/Speech API Integration for real-time voice streaming
     const handleVoiceInput = () => {
         const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
         if (!SpeechRecognition) {
@@ -123,26 +125,93 @@ export default function AssistantPortal({ isOpen, onClose }) {
                 exit={{ opacity: 0 }}
                 style={{
                     position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh',
-                    backgroundColor: 'rgba(15, 23, 42, 0.25)', 
-                    backdropFilter: 'blur(12px)',
+                    background: 'linear-gradient(135deg, #e0f2fe 0%, #f3e8ff 40%, #fff7ed 75%, #dcfce7 100%)',
                     display: 'flex', alignItems: 'center', justifyContent: 'center',
                     zIndex: 1000000, overflow: 'hidden',
                     fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Inter, sans-serif'
                 }}
             >
+                {/* DYNAMIC LIQUID GRADIENT BACKGROUND ANIMATION */}
+                <div style={{ position: 'absolute', inset: 0, overflow: 'hidden', zIndex: 0, pointerEvents: 'none' }}>
+                    {/* Orb 1: Blue Smooth Wave */}
+                    <motion.div 
+                        animate={{
+                            x: [0, 90, -60, 0],
+                            y: [0, -110, 80, 0],
+                            scale: [1, 1.35, 0.85, 1],
+                            rotate: [0, 120, 240, 360]
+                        }}
+                        transition={{
+                            duration: 20,
+                            repeat: Infinity,
+                            ease: 'easeInOut'
+                        }}
+                        style={{
+                            position: 'absolute', top: '-15%', left: '5%',
+                            width: '650px', height: '650px', borderRadius: '50%',
+                            background: 'radial-gradient(circle, rgba(56, 189, 248, 0.45) 0%, rgba(56, 189, 248, 0) 70%)',
+                            filter: 'blur(110px)'
+                        }}
+                    />
+
+                    {/* Orb 2: Purple Slow Wave */}
+                    <motion.div 
+                        animate={{
+                            x: [0, -120, 90, 0],
+                            y: [0, 100, -120, 0],
+                            scale: [1, 0.85, 1.3, 1],
+                            rotate: [360, 240, 120, 0]
+                        }}
+                        transition={{
+                            duration: 25,
+                            repeat: Infinity,
+                            ease: 'easeInOut',
+                            delay: 1
+                        }}
+                        style={{
+                            position: 'absolute', bottom: '-10%', right: '-5%',
+                            width: '750px', height: '750px', borderRadius: '50%',
+                            background: 'radial-gradient(circle, rgba(168, 85, 247, 0.38) 0%, rgba(168, 85, 247, 0) 70%)',
+                            filter: 'blur(120px)'
+                        }}
+                    />
+
+                    {/* Orb 3: Orange Flow Spark */}
+                    <motion.div 
+                        animate={{
+                            x: [0, 70, -90, 0],
+                            y: [0, 110, -60, 0],
+                            scale: [1, 1.2, 0.9, 1]
+                        }}
+                        transition={{
+                            duration: 22,
+                            repeat: Infinity,
+                            ease: 'easeInOut',
+                            delay: 3
+                        }}
+                        style={{
+                            position: 'absolute', top: '25%', left: '35%',
+                            width: '500px', height: '500px', borderRadius: '50%',
+                            background: 'radial-gradient(circle, rgba(249, 115, 22, 0.2) 0%, rgba(249, 115, 22, 0) 70%)',
+                            filter: 'blur(100px)'
+                        }}
+                    />
+                </div>
+
+                {/* MAIN WRAPPER PANEL WITH LUXURY SATIN GLASS TRANSLUCENCY */}
                 <motion.div
-                    initial={{ opacity: 0, scale: 0.96, y: 20 }}
+                    initial={{ opacity: 0, scale: 0.96, y: 15 }}
                     animate={{ opacity: 1, scale: 1, y: 0 }}
-                    exit={{ opacity: 0, scale: 0.96, y: 20 }}
-                    transition={{ type: 'spring', stiffness: 280, damping: 26, mass: 0.7 }}
+                    exit={{ opacity: 0, scale: 0.96, y: 15 }}
+                    transition={{ type: 'spring', stiffness: 300, damping: 28, mass: 0.8 }}
                     style={{
                         width: '94vw', height: '90vh',
-                        backgroundColor: 'rgba(255, 255, 255, 0.85)',
-                        backdropFilter: 'blur(20px)',
-                        borderRadius: '20px',
-                        border: '1px solid rgba(255, 255, 255, 0.6)', 
-                        boxShadow: '0 30px 60px -15px rgba(0, 0, 0, 0.12), 0 0 0 1px rgba(0,0,0,0.04)', 
-                        display: 'flex', overflow: 'hidden'
+                        backgroundColor: 'rgba(255, 255, 255, 0.55)',
+                        backdropFilter: 'blur(35px) saturate(190%)',
+                        borderRadius: '24px',
+                        border: '1px solid rgba(255, 255, 255, 0.7)', 
+                        boxShadow: '0 40px 80px -20px rgba(15, 23, 42, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.4)', 
+                        display: 'flex', overflow: 'hidden', zIndex: 1
                     }}
                 >
                     <Sidebar 
@@ -155,94 +224,110 @@ export default function AssistantPortal({ isOpen, onClose }) {
                     />
 
                     <div style={{ flex: 1, display: 'flex', flexDirection: 'column', overflow: 'hidden', backgroundColor: 'transparent' }}>
-                        {/* Smooth Header */}
+                        {/* Header */}
                         <div style={{
-                            height: '60px', borderBottom: '1px solid rgba(0,0,0,0.06)',
+                            height: '64px', borderBottom: '1px solid rgba(15, 23, 42, 0.05)',
                             padding: '0 24px', display: 'flex', alignItems: 'center',
-                            justifyContent: 'space-between', backgroundColor: 'rgba(255,255,255,0.4)'
+                            justifyContent: 'space-between', backgroundColor: 'rgba(255, 255, 255, 0.35)'
                         }}>
-                            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                                <span style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#10b981' }} />
-                                <span style={{ fontSize: '13px', fontWeight: '600', color: '#0f172a', letterSpacing: '-0.2px' }}>
-                                    Magna Production Engine
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                                <span style={{ 
+                                    width: '8px', height: '8px', borderRadius: '50%', 
+                                    backgroundColor: '#22c55e',
+                                    boxShadow: '0 0 8px #22c55e'
+                                }} />
+                                <span style={{ fontSize: '13px', fontWeight: '650', color: '#0f172a', letterSpacing: '-0.2px' }}>
+                                    Magna Engine Shell
                                 </span>
                             </div>
                             <motion.button
-                                whileHover={{ scale: 1.05, backgroundColor: 'rgba(0,0,0,0.05)' }}
+                                whileHover={{ scale: 1.05, backgroundColor: 'rgba(15, 23, 42, 0.05)' }}
                                 whileTap={{ scale: 0.95 }}
                                 onClick={onClose}
                                 style={{
                                     border: 'none', background: 'transparent', width: '28px', height: '28px',
                                     borderRadius: '50%', cursor: 'pointer', display: 'flex', alignItems: 'center',
-                                    justifyContent: 'center', color: '#64748b', fontSize: '12px'
+                                    justifyContent: 'center', transition: 'background-color 0.2s'
                                 }}
                             >
-                                ✕
+                                <CloseIcon />
                             </motion.button>
                         </div>
 
-                        {/* Interactive Main Dynamic Zone */}
-                        <div style={{ flex: 1, display: 'flex', flexDirection: 'column', overflow: 'hidden', backgroundColor: '#fdfdfe' }}>
+                        {/* Main Interactive Workspace Area */}
+                        <div style={{ flex: 1, display: 'flex', flexDirection: 'column', overflow: 'hidden', backgroundColor: 'transparent' }}>
                             <AnimatePresence mode="wait">
                                 {activeMessages.length === 0 ? (
                                     <motion.div 
                                         key="welcome"
-                                        initial={{ opacity: 0, y: 10 }}
+                                        initial={{ opacity: 0, y: 8 }}
                                         animate={{ opacity: 1, y: 0 }}
-                                        exit={{ opacity: 0, y: -10 }}
-                                        style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', padding: '40px 24px' }}
+                                        exit={{ opacity: 0, y: -8 }}
+                                        style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', padding: '32px 24px' }}
                                     >
-                                        <div style={{ textAlign: 'center', marginBottom: '40px' }}>
-                                            <h1 style={{ fontSize: '32px', fontWeight: '800', color: '#0f172a', margin: '0 0 10px 0', letterSpacing: '-1px' }}>
+                                        <div style={{ textAlign: 'center', marginBottom: '32px' }}>
+                                            <h1 style={{ 
+                                                fontSize: '34px', 
+                                                fontWeight: '850', 
+                                                color: '#0f172a', 
+                                                margin: '0 0 10px 0', 
+                                                letterSpacing: '-1.2px',
+                                                lineHeight: '1.15',
+                                                background: 'linear-gradient(135deg, #0f172a 30%, #3b82f6 100%)',
+                                                WebkitBackgroundClip: 'text',
+                                                WebkitTextFillColor: 'transparent'
+                                            }}>
                                                 Design with absolute intelligence.
                                             </h1>
-                                            <p style={{ fontSize: '14px', color: '#64748b', margin: 0, fontWeight: '450' }}>
+                                            <p style={{ fontSize: '13.5px', color: '#64748b', margin: 0, fontWeight: '450' }}>
                                                 Execute runtime tasks, configure workflows or stream active database modules.
                                             </p>
                                         </div>
 
-                                        {/* Luxury Monolithic Input Box with Black Lucide Microphone */}
+                                        {/* Input Box Container */}
                                         <div style={{
-                                            width: '100%', maxWidth: '640px', backgroundColor: '#ffffff',
-                                            border: '1px solid #e2e8f0', borderRadius: '14px', padding: '10px 14px',
-                                            display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '40px',
-                                            boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.03), 0 1px 3px rgba(0,0,0,0.01)',
-                                            position: 'relative'
-                                        }} className="magna-glow-input">
+                                            width: '100%', maxWidth: '600px', backgroundColor: '#ffffff',
+                                            border: '1px solid #e2e8f0', borderRadius: '14px', padding: '8px 12px',
+                                            display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '32px',
+                                            boxShadow: '0 10px 30px -10px rgba(15, 23, 42, 0.04), 0 1px 3px rgba(0,0,0,0.01)',
+                                            position: 'relative',
+                                            boxSizing: 'border-box'
+                                        }}>
                                             <input
                                                 type="text"
                                                 placeholder="Ask Magna anything or type instructions..."
                                                 value={input}
                                                 onChange={(e) => setInput(e.target.value)}
                                                 onKeyDown={(e) => e.key === 'Enter' && handleSend()}
-                                                style={{ flex: 1, background: 'none', border: 'none', outline: 'none', fontSize: '14px', color: '#0f172a' }}
+                                                style={{ flex: 1, background: 'none', border: 'none', outline: 'none', fontSize: '13.5px', color: '#0f172a' }}
                                             />
                                             
-                                            {/* Micro-spring Audio trigger */}
                                             <motion.button
-                                                whileHover={{ scale: 1.08, backgroundColor: '#f1f5f9' }}
-                                                whileTap={{ scale: 0.92 }}
+                                                whileHover={{ scale: 1.06, backgroundColor: isListening ? '#fee2e2' : '#f1f5f9' }}
+                                                whileTap={{ scale: 0.94 }}
                                                 onClick={handleVoiceInput}
                                                 style={{
-                                                    background: isListening ? '#fef2f2' : 'transparent',
-                                                    border: isListening ? '1px solid #fca5a5' : 'none',
-                                                    borderRadius: '8px', padding: '6px', cursor: 'pointer',
+                                                    background: isListening ? 'rgba(239, 68, 68, 0.08)' : 'transparent',
+                                                    border: isListening ? '1px solid rgba(239, 68, 68, 0.2)' : '1px solid transparent',
+                                                    borderRadius: '8px', width: '28px', height: '28px', cursor: 'pointer',
                                                     display: 'flex', alignItems: 'center', justifyContent: 'center',
-                                                    transition: 'background-color 0.15s'
+                                                    boxShadow: isListening ? '0 0 12px rgba(239, 68, 68, 0.15)' : 'none',
+                                                    transition: 'all 0.2s ease',
+                                                    flexShrink: 0
                                                 }}
                                                 title="Speak via Audio Input"
                                             >
-                                                <MicIcon />
+                                                <MicIcon isListening={isListening} />
                                             </motion.button>
 
                                             <motion.button
-                                                whileHover={{ scale: 1.02, y: -0.5 }}
+                                                whileHover={{ scale: 1.02, backgroundColor: '#1e293b' }}
                                                 whileTap={{ scale: 0.98 }}
                                                 onClick={() => handleSend()}
                                                 style={{
                                                     background: '#0f172a', border: 'none', color: '#ffffff',
-                                                    padding: '8px 16px', borderRadius: '10px', fontSize: '12.5px',
-                                                    fontWeight: '600', cursor: 'pointer'
+                                                    padding: '7px 14px', borderRadius: '8px', fontSize: '12px',
+                                                    fontWeight: '600', cursor: 'pointer', transition: 'background-color 0.15s ease'
                                                 }}
                                             >
                                                 Execute
@@ -255,41 +340,49 @@ export default function AssistantPortal({ isOpen, onClose }) {
                                     <motion.div key="chat" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} style={{ flex: 1, display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
                                         <ChatArea messages={activeMessages} />
                                         
-                                        {/* Sticky Bottom Bar with Black Lucide Microphone */}
-                                        <div style={{ padding: '20px 24px', backgroundColor: '#ffffff', borderTop: '1px solid rgba(0,0,0,0.05)' }}>
+                                        {/* Chat Input Area */}
+                                        <div style={{ padding: '16px 24px', backgroundColor: 'rgba(255, 255, 255, 0.55)', borderTop: '1px solid rgba(15, 23, 42, 0.05)' }}>
                                             <div style={{
-                                                maxWidth: '800px', margin: '0 auto', backgroundColor: '#ffffff',
-                                                border: '1px solid #e2e8f0', borderRadius: '12px', padding: '8px 12px',
-                                                display: 'flex', alignItems: 'center', gap: '12px',
-                                                boxShadow: '0 4px 12px rgba(0,0,0,0.02)'
-                                            }} className="magna-glow-input">
+                                                maxWidth: '750px', margin: '0 auto', backgroundColor: '#ffffff',
+                                                border: '1px solid #e2e8f0', borderRadius: '12px', padding: '6px 10px',
+                                                display: 'flex', alignItems: 'center', gap: '10px',
+                                                boxShadow: '0 4px 16px rgba(15, 23, 42, 0.02)'
+                                            }}>
                                                 <input
                                                     type="text"
                                                     placeholder="Reply to Magna..."
                                                     value={input}
                                                     onChange={(e) => setInput(e.target.value)}
                                                     onKeyDown={(e) => e.key === 'Enter' && handleSend()}
-                                                    style={{ flex: 1, background: 'none', border: 'none', outline: 'none', fontSize: '13.5px', color: '#0f172a' }}
+                                                    style={{ flex: 1, background: 'none', border: 'none', outline: 'none', fontSize: '13px', color: '#0f172a' }}
                                                 />
 
-                                                {/* Micro-spring Audio trigger */}
                                                 <motion.button
-                                                    whileHover={{ scale: 1.08, backgroundColor: '#f1f5f9' }}
-                                                    whileTap={{ scale: 0.92 }}
+                                                    whileHover={{ scale: 1.06, backgroundColor: isListening ? '#fee2e2' : '#f1f5f9' }}
+                                                    whileTap={{ scale: 0.94 }}
                                                     onClick={handleVoiceInput}
                                                     style={{
-                                                        background: isListening ? '#fef2f2' : 'transparent',
-                                                        border: isListening ? '1px solid #fca5a5' : 'none',
-                                                        borderRadius: '8px', padding: '6px', cursor: 'pointer',
+                                                        background: isListening ? 'rgba(239, 68, 68, 0.08)' : 'transparent',
+                                                        border: isListening ? '1px solid rgba(239, 68, 68, 0.2)' : '1px solid transparent',
+                                                        borderRadius: '8px', width: '28px', height: '28px', cursor: 'pointer',
                                                         display: 'flex', alignItems: 'center', justifyContent: 'center',
-                                                        transition: 'background-color 0.15s'
+                                                        boxShadow: isListening ? '0 0 12px rgba(239, 68, 68, 0.15)' : 'none',
+                                                        transition: 'all 0.2s ease',
+                                                        flexShrink: 0
                                                     }}
                                                     title="Speak via Audio Input"
                                                 >
-                                                    <MicIcon />
+                                                    <MicIcon isListening={isListening} />
                                                 </motion.button>
 
-                                                <button onClick={() => handleSend()} style={{ background: '#0f172a', border: 'none', color: '#ffffff', padding: '6px 14px', borderRadius: '8px', fontSize: '12px', fontWeight: '600', cursor: 'pointer' }}>
+                                                <button 
+                                                    onClick={() => handleSend()} 
+                                                    style={{ 
+                                                        background: '#0f172a', border: 'none', color: '#ffffff', 
+                                                        padding: '6px 12px', borderRadius: '7px', fontSize: '11.5px', 
+                                                        fontWeight: '600', cursor: 'pointer', transition: 'background-color 0.15s' 
+                                                    }}
+                                                >
                                                     Send
                                                 </button>
                                             </div>

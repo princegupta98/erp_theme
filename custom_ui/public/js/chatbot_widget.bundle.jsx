@@ -1,54 +1,126 @@
 // chatbot_widget.bundle.jsx
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom/client';
-import { motion, AnimatePresence } from 'framer-motion';
 import AssistantPortal from './magna_ai_assistant/AssistantPortal';
 
-function MagnaAICopilotApp() {
+// Premium Lucide MessageSquareCode Icon SVG String for Native Injection
+const ChatBotIconSVG = `
+    <svg 
+        xmlns="http://www.w3.org/2000/svg" 
+        width="18" 
+        height="18" 
+        viewBox="0 0 24 24" 
+        fill="none" 
+        stroke="currentColor" 
+        stroke-width="2.2" 
+        stroke-linecap="round" 
+        stroke-linejoin="round"
+        style="display: block; pointer-events: none;"
+    >
+        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+        <path d="m10 8-3 3 3 3"/>
+        <path d="m14 14 3-3-3-3"/>
+    </svg>
+`;
+
+function MagnaAICopilotApp({ registerOpenHandler }) {
     const [isOpen, setIsOpen] = useState(false);
 
-    return (
-        <>
-            <AnimatePresence>
-                {!isOpen && (
-                    <motion.div 
-                        id="magna-edge-toggle-tab"
-                        onClick={() => setIsOpen(true)}
-                        initial={{ x: 80, opacity: 0 }}
-                        animate={{ x: 0, opacity: 1 }}
-                        exit={{ x: 80, opacity: 0 }}
-                        transition={{ type: 'spring', stiffness: 240, damping: 22, delay: 0.5 }}
-                        whileHover={{ x: -4, backgroundColor: '#000000' }}
-                        whileTap={{ scale: 0.96 }}
-                        style={{
-                            position: 'fixed', right: 0, top: '50%',
-                            transform: 'translateY(-50%)',
-                            backgroundColor: '#0f172a', color: '#ffffff',
-                            padding: '16px 10px', borderRadius: '12px 0 0 12px',
-                            cursor: 'pointer', zIndex: 999999,
-                            boxShadow: '0 20px 40px -10px rgba(15,23,42,0.3)',
-                            writingMode: 'vertical-rl', textOrientation: 'mixed',
-                            fontSize: '11px', fontFamily: 'Inter, -apple-system, sans-serif',
-                            fontWeight: '700', letterSpacing: '1.5px', textTransform: 'uppercase',
-                            display: 'flex', alignItems: 'center', gap: '8px', userSelect: 'none'
-                        }}
-                    >
-                        <span style={{ transform: 'rotate(90deg)', fontSize: '12px' }}>✦</span>
-                        Magna Engine
-                    </motion.div>
-                )}
-            </AnimatePresence>
+    useEffect(() => {
+        // Register the function to toggle chatbot visibility
+        registerOpenHandler(() => setIsOpen(true));
+    }, [registerOpenHandler]);
 
-            <AssistantPortal isOpen={isOpen} onClose={() => setIsOpen(false)} />
-        </>
+    return (
+        <AssistantPortal isOpen={isOpen} onClose={() => setIsOpen(false)} />
     );
+}
+
+// Function to safely inject button into the LEFT of the Bell Container
+function injectChatbotButton() {
+    // Agar button already present hai, toh dobara inject mat karo
+    if (document.getElementById('magna-navbar-chat-trigger')) return true;
+
+    // Target the main notifications outer wrapper container
+    const bellContainer = $('.desktop-navbar .desktop-notifications');
+
+    if (bellContainer && bellContainer.length > 0) {
+        const chatButtonHTML = `
+            <button 
+                id="magna-navbar-chat-trigger" 
+                class="btn-reset nav-link text-muted" 
+                title="Open Magna AI Engine"
+                style="
+                    display: flex; 
+                    align-items: center; 
+                    justify-content: center; 
+                    padding: 6px; 
+                    border-radius: 8px; 
+                    cursor: pointer;
+                    position: relative;
+                    transition: all 0.2s ease;
+                    color: var(--text-muted, #64748b);
+                    margin-right: 4px; /* Subtle spacing before the bell */
+                "
+            >
+                ${ChatBotIconSVG}
+                <!-- Premium Green Glowing Dot -->
+                <span style="
+                    position: absolute;
+                    top: 4px;
+                    right: 4px;
+                    width: 6px;
+                    height: 6px;
+                    border-radius: 50%;
+                    background-color: #22c55e;
+                    box-shadow: 0 0 8px #22c55e;
+                "></span>
+            </button>
+        `;
+
+        // INJECT ON THE LEFT: Bell container ke theek pehle
+        bellContainer.before(chatButtonHTML);
+        console.log("Magna Chatbot Button Injected on navigation / route change.");
+        return true;
+    }
+    return false;
 }
 
 $(document).on('app_ready', function() {
     if (document.getElementById('magna-ai-copilot-container')) return;
 
+    // 1. Initial Injection
+    injectChatbotButton();
+
+    // 2. Continuous MutationObserver to watch DOM over-writes
+    // Isko disconnect nahi karenge taaki routing changes me jab navbar re-render ho, ye instantly trace karle.
+    const observer = new MutationObserver((mutations) => {
+        injectChatbotButton();
+    });
+
+    observer.observe(document.body, {
+        childList: true,
+        subtree: true
+    });
+
+    // 3. Frappe Native Events Support: Page and Route changes trigger button recovery
+    $(document).on('page-change route-change hashchange', function() {
+        setTimeout(() => {
+            injectChatbotButton();
+        }, 100); // 100ms standard render gap buffer
+    });
+
+    // 4. Custom Hover/Active CSS Styles
     const cssText = `
         <style>
+            #magna-navbar-chat-trigger:hover {
+                color: #0f172a !important;
+                background-color: rgba(15, 23, 42, 0.06) !important;
+                transform: scale(1.05);
+            }
+            #magna-navbar-chat-trigger:active {
+                transform: scale(0.95);
+            }
             .magna-glow-input {
                 transition: border-color 0.2s ease, box-shadow 0.2s ease !important;
             }
@@ -72,10 +144,24 @@ $(document).on('app_ready', function() {
     `;
     $('head').append(cssText);
 
+    // 5. React Mount
     const container = document.createElement('div');
     container.id = 'magna-ai-copilot-container';
     document.body.appendChild(container);
 
+    let openPortalFn = () => {};
+
     const root = ReactDOM.createRoot(container);
-    root.render(<MagnaAICopilotApp />);
+    root.render(
+        <MagnaAICopilotApp registerOpenHandler={(fn) => { openPortalFn = fn; }} />
+    );
+
+    // 6. Global event delegate (bina bypass ke, body element par permanently bound)
+    $(document).on('click', '#magna-navbar-chat-trigger', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        if (typeof openPortalFn === 'function') {
+            openPortalFn();
+        }
+    });
 });

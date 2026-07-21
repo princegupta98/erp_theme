@@ -12,16 +12,16 @@ frappe.ui.ThemeSwitcher = class extends OriginalThemeSwitcher {
 				label: __("Ocean Blue"),
 				info: __("Blue Theme"),
 			},
-			{
-				name: "orange",
-				label: __("Ollive Green"),
-				info: __("Orange Theme"),
-			},
-			{
-				name: "brown",
-				label: __("Coffee Brown"),
-				info: __("Brown Theme"),
-			},
+			// {
+			// 	name: "orange",
+			// 	label: __("Ollive Green"),
+			// 	info: __("Orange Theme"),
+			// },
+			// {
+			// 	name: "brown",
+			// 	label: __("Coffee Brown"),
+			// 	info: __("Brown Theme"),
+			// },
 			{
 				name: "peach",
 				label: __("Peach Orange"),
@@ -40,8 +40,8 @@ frappe.ui.ThemeSwitcher = class extends OriginalThemeSwitcher {
 	get_preview_html(theme) {
 		const custom_themes = {
 			blue: "dark",
-			orange: "light",
-			brown: "dark",
+			// orange: "light",
+			// brown: "dark",
 			peach: "light",
 			purple: "light",
 
@@ -102,8 +102,8 @@ frappe.ui.ThemeSwitcher = class extends OriginalThemeSwitcher {
 		console.log("Selected Theme :", theme);
 		const custom_themes = {
 			blue: "dark",
-			orange: "light",
-			brown: "dark",
+			// orange: "light",
+			// brown: "dark",
 			peach: "light",
 			purple: "light",
 		};

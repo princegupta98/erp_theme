@@ -1,0 +1,228 @@
+/* ==========================================================
+   DESKTOP BASE
+   Common styling for Desk cards, icon containers and titles
+========================================================== */
+
+
+/* ==========================================================
+   DESKTOP APP CARD
+========================================================== */
+
+.desktop-icon {
+    width: 130px !important;
+    height: 145px !important;
+
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+
+    gap: 12px !important;
+    padding: 0 !important;
+
+    background: transparent !important;
+    background-color: transparent !important;
+    background-image: none !important;
+
+    border: none !important;
+    box-shadow: none !important;
+
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+
+    border-radius: 0 !important;
+
+    overflow: visible !important;
+
+    transition: transform 0.25s ease !important;
+}
+
+
+/* ==========================================================
+   TRANSPARENT ICON BOX
+========================================================== */
+
+.desktop-icon .icon-container {
+    width: 76px !important;
+    height: 76px !important;
+
+    min-width: 76px !important;
+    min-height: 76px !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    background: rgba(255, 255, 255, 0.10) !important;
+    background-color: rgba(255, 255, 255, 0.10) !important;
+    background-image: none !important;
+
+    border: 1px solid rgba(255, 255, 255, 0.80) !important;
+    border-radius: 18px !important;
+
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+
+    box-shadow:
+        -8px -8px 24px #ffffff,
+        12px 16px 32px rgba(0, 0, 0, 0.06) !important;
+
+    overflow: visible !important;
+
+    transition:
+        transform 0.25s ease,
+        background 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease !important;
+}
+
+
+/* ==========================================================
+   SVG CONTAINER
+========================================================== */
+
+.desktop-icon .desktop-card-icon {
+    width: 64px !important;
+    height: 64px !important;
+
+    min-width: 64px !important;
+    min-height: 64px !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    background: transparent !important;
+    background-color: transparent !important;
+    background-image: none !important;
+
+    border: none !important;
+    box-shadow: none !important;
+
+    overflow: visible !important;
+}
+
+
+/* ==========================================================
+   ACTUAL APP SVG
+========================================================== */
+
+.desktop-icon .desktop-card-icon .app-icon {
+    width: 56px !important;
+    height: 56px !important;
+
+    min-width: 56px !important;
+    min-height: 56px !important;
+
+    max-width: none !important;
+    max-height: none !important;
+
+    display: block !important;
+
+    object-fit: contain !important;
+
+    background: transparent !important;
+    background-color: transparent !important;
+    background-image: none !important;
+
+    border: none !important;
+    box-shadow: none !important;
+
+    overflow: visible !important;
+}
+
+
+/* ==========================================================
+   ICON CAPTION
+========================================================== */
+
+.desktop-icon .icon-caption {
+    width: 110px !important;
+    height: auto !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    padding: 0 !important;
+    margin: 0 !important;
+
+    background: transparent !important;
+    background-color: transparent !important;
+
+    border: none !important;
+    box-shadow: none !important;
+}
+
+
+/* ==========================================================
+   ICON TITLE
+========================================================== */
+
+.desktop-icon .icon-title {
+    width: 100% !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    font-size: 12px !important;
+    font-weight: 500 !important;
+    line-height: 16px !important;
+
+    color: #2b2b2b !important;
+
+    text-align: center !important;
+
+    white-space: normal !important;
+    overflow: visible !important;
+    text-overflow: unset !important;
+}
+
+
+/* ==========================================================
+   MODAL / DRAWER SVG VISIBILITY
+========================================================== */
+
+.desktop-modal-body
+.desktop-icon
+.desktop-card-icon
+.app-icon {
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: block !important;
+
+    background: transparent !important;
+}
+
+
+/* ==========================================================
+   MODAL FALLBACK ALPHABET ICON
+========================================================== */
+
+.desktop-modal-body
+.desktop-icon
+.icon-container
+.desktop-alphabet {
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+
+    width: 32px !important;
+    height: 32px !important;
+}
+
+
+/* Keep fallback alphabet white */
+
+.desktop-modal-body
+.desktop-icon
+.icon-container
+.desktop-alphabet,
+
+.desktop-modal-body
+.desktop-icon
+.icon-container
+.desktop-alphabet .fill {
+    color: #ffffff !important;
+    fill: #ffffff !important;
+}

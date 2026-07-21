@@ -34,23 +34,23 @@ html[data-theme-mode="peach"] body {
 
 html[data-theme-mode="peach"] .desk-container,
 html[data-theme-mode="peach"] .layout-main,
-html[data-theme-mode="peach"] .layout-main-section {
+/* html[data-theme-mode="peach"] .layout-main-section {
 
     background:
 
         radial-gradient(circle at 100% 15%,
-            rgba(255, 160, 90, .70) 0%,
+            rgba(252, 141, 62, 0.992) 0%,
             transparent 34%),
 
         radial-gradient(circle at 0% 100%,
-            rgba(255, 205, 150, .60) 0%,
+            rgb(250, 184, 113) 0%,
             transparent 32%),
 
         linear-gradient(180deg,
-            #FFF7F3,
-            #FFF8F5,
+            #fccbb3,
+            #ffd3c0,
             #FFF5EF) !important;
-}
+} */
 
 html[data-theme-mode="peach"] .layout-main-section {
 
@@ -717,4 +717,108 @@ html[data-theme-mode="peach"] .layout-main-section {
 
 .theme-preview.preview-peach .navbar {
     background: linear-gradient(90deg, #ff6a00, #ffb36b);
+}
+/* ==========================================================
+   FIX DESKTOP FULL BACKGROUND - REMOVE BOTTOM WHITE STRIP
+========================================================== */
+
+html[data-theme-mode="peach"],
+html[data-theme-mode="peach"] body,
+html[data-theme-mode="peach"] #body,
+html[data-theme-mode="peach"] #page-desktop,
+html[data-theme-mode="peach"] .desktop-page,
+html[data-theme-mode="peach"] .desk-container {
+    background:
+        radial-gradient(circle at 105% 12%,
+            rgba(255, 145, 70, .85) 0%,
+            rgba(255, 170, 95, .55) 22%,
+            rgba(255, 210, 170, .20) 42%,
+            transparent 58%),
+
+        radial-gradient(circle at -5% 105%,
+            rgba(255, 145, 70, .85) 0%,
+            rgba(255, 170, 95, .55) 22%,
+            rgba(255, 210, 170, .20) 42%,
+            transparent 58%),
+
+        linear-gradient(
+            180deg,
+            #FFF7F3,
+            #FFF8F5,
+            #FFF5EF
+        ) !important;
+
+    background-attachment: fixed !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+}
+
+/* Desktop content should continue same theme */
+html[data-theme-mode="peach"] #page-desktop,
+html[data-theme-mode="peach"] .desktop-page {
+    min-height: calc(100vh - 50px) !important;
+}
+
+/* Remove Frappe white background from inner desktop wrappers */
+html[data-theme-mode="peach"] #page-desktop > *,
+html[data-theme-mode="peach"] .desktop-page > *,
+html[data-theme-mode="peach"] .desktop-container,
+html[data-theme-mode="peach"] .desktop-wrapper,
+html[data-theme-mode="peach"] .desktop-content {
+    background-color: transparent !important;
+}
+/* FIX DESKTOP BACKGROUND BREAK */
+
+html[data-theme-mode="peach"] #page-desktop,
+html[data-theme-mode="peach"] .desktop-page,
+html[data-theme-mode="peach"] .desk-container,
+html[data-theme-mode="peach"] .layout-main,
+html[data-theme-mode="peach"] .layout-main-section {
+    background: transparent !important;
+}
+
+/* ONE CONTINUOUS BACKGROUND ON BODY */
+html[data-theme-mode="peach"] body {
+    min-height: 100vh !important;
+
+    background:
+        radial-gradient(circle at 105% 12%,
+            rgba(255, 145, 70, .85) 0%,
+            rgba(255, 170, 95, .55) 22%,
+            rgba(255, 210, 170, .20) 42%,
+            transparent 58%),
+
+        radial-gradient(circle at -5% 105%,
+            rgba(255, 145, 70, .85) 0%,
+            rgba(255, 170, 95, .55) 22%,
+            rgba(255, 210, 170, .20) 42%,
+            transparent 58%),
+
+        linear-gradient(180deg,
+            #FFF7F3,
+            #FFF8F5,
+            #FFF5EF) !important;
+
+    background-attachment: fixed !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+}
+/* Hide empty workspace widgets/cards */
+html[data-theme-mode="peach"] .widget:empty,
+html[data-theme-mode="purple"] .widget:empty {
+    display: none !important;
+}
+/* ==========================================================
+   PEACH - TRANSPARENT PAGE CONTAINERS
+========================================================== */
+
+html[data-theme-mode="peach"] .page-content,
+html[data-theme-mode="peach"] .layout-main-section-wrapper,
+html[data-theme-mode="peach"] .desk-page,
+html[data-theme-mode="peach"] .page-container,
+html[data-theme-mode="peach"] .workspace-body,
+html[data-theme-mode="peach"] .dashboard,
+html[data-theme-mode="peach"] .page-body,
+html[data-theme-mode="peach"] .page-wrapper {
+    background: transparent !important;
 }

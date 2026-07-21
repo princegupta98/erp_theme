@@ -1,0 +1,54 @@
+/* ==========================================================
+   DESKTOP ICON POSITIONING
+========================================================== */
+
+
+/* ==========================================================
+   MAIN DESK ONLY
+   CENTER NORMAL ICONS
+   ACCOUNTING EXCLUDED
+========================================================== */
+
+#page-desktop
+.desktop-container
+.desktop-icon.desktop-card:not([data-id="Accounting"]):not(.desktop-modal-body .desktop-icon)
+> .icon-container {
+    display: flex !important;
+
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+
+/* ==========================================================
+   MAIN DESK ONLY
+   MOVE NORMAL APP SVG SLIGHTLY DOWN
+========================================================== */
+
+#page-desktop
+.desktop-container
+.desktop-icon.desktop-card:not([data-id="Accounting"])
+> .icon-container
+> .desktop-card-icon {
+    display: flex !important;
+
+    align-items: center !important;
+    justify-content: center !important;
+
+    margin: 0 !important;
+
+    transform: translateY(5px) !important;
+}
+
+
+/* ==========================================================
+   DRAWER / MODAL
+   NEVER APPLY MAIN DESK DOWNWARD MOVEMENT
+========================================================== */
+
+.desktop-modal-body
+.desktop-icon
+> .icon-container
+> .desktop-card-icon {
+    transform: none !important;
+}

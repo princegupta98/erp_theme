@@ -1,0 +1,18 @@
+[33m5918e3b[m[33m ([m[1;36mHEAD -> [m[1;32mTejas-main[m[33m, [m[1;31mupstream/Tejas-main[m[33m)[m HEAD@{0}: reset: moving to ORIG_HEAD
+[33m5918e3b[m[33m ([m[1;36mHEAD -> [m[1;32mTejas-main[m[33m, [m[1;31mupstream/Tejas-main[m[33m)[m HEAD@{1}: reset: moving to ORIG_HEAD
+[33m5918e3b[m[33m ([m[1;36mHEAD -> [m[1;32mTejas-main[m[33m, [m[1;31mupstream/Tejas-main[m[33m)[m HEAD@{2}: reset: moving to ORIG_HEAD
+[33m5918e3b[m[33m ([m[1;36mHEAD -> [m[1;32mTejas-main[m[33m, [m[1;31mupstream/Tejas-main[m[33m)[m HEAD@{3}: rebase (finish): returning to refs/heads/Tejas-main
+[33m5918e3b[m[33m ([m[1;36mHEAD -> [m[1;32mTejas-main[m[33m, [m[1;31mupstream/Tejas-main[m[33m)[m HEAD@{4}: rebase (pick): added backend
+[33m4e1f0bf[m HEAD@{5}: rebase (start): checkout upstream/Tejas-main
+[33mcca315d[m HEAD@{6}: commit: added backend
+[33m7c6ddfc[m HEAD@{7}: pull upstream Tejas-main: Fast-forward
+[33m81396f8[m HEAD@{8}: pull upstream Tejas-main: Fast-forward
+[33me0bfb5b[m HEAD@{9}: checkout: moving from ai_implementation to Tejas-main
+[33ma729584[m[33m ([m[1;31mupstream/ai_implementation[m[33m, [m[1;32mai_implementation[m[33m)[m HEAD@{10}: commit: feat(ai): update Magna AI assistant UI and desktop theme modifier
+[33m001bbb0[m[33m ([m[1;31mupstream/remove_frappe_v2[m[33m, [m[1;32mremove_frappe_v2[m[33m)[m HEAD@{11}: checkout: moving from remove_frappe_v2 to ai_implementation
+[33m001bbb0[m[33m ([m[1;31mupstream/remove_frappe_v2[m[33m, [m[1;32mremove_frappe_v2[m[33m)[m HEAD@{12}: commit: Remove Frappe UI and add Magna AI assistant
+[33md601f7f[m[33m ([m[1;32mremove_frappe[m[33m)[m HEAD@{13}: checkout: moving from remove_frappe to remove_frappe_v2
+[33md601f7f[m[33m ([m[1;32mremove_frappe[m[33m)[m HEAD@{14}: commit: remove everything related to frappe
+[33me74d7ac[m[33m ([m[1;34mgrafted[m[33m, [m[1;32mmain[m[33m)[m HEAD@{15}: checkout: moving from main to remove_frappe
+[33me74d7ac[m[33m ([m[1;34mgrafted[m[33m, [m[1;32mmain[m[33m)[m HEAD@{16}: checkout: moving from main to main
+[33me74d7ac[m[33m ([m[1;34mgrafted[m[33m, [m[1;32mmain[m[33m)[m HEAD@{17}: clone: from https://github.com/princegupta98/erp_theme.git

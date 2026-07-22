@@ -29,6 +29,12 @@ frappe.ui.ThemeSwitcher = class extends OriginalThemeSwitcher {
 				preview_class: "preview-peach",
 			},
 			{
+				name: "sky",
+				label: __("Sky Blue"),
+				info: __("Sky Blue Theme"),
+				preview_class: "preview-sky",
+			},
+			{
 				name: "purple",
 				label: __("Purple"),
 				info: __("Purple Theme"),
@@ -44,6 +50,7 @@ frappe.ui.ThemeSwitcher = class extends OriginalThemeSwitcher {
 			brown: "dark",
 			peach: "light",
 			purple: "light",
+			sky: "light",
 
 		};
 
@@ -106,6 +113,7 @@ frappe.ui.ThemeSwitcher = class extends OriginalThemeSwitcher {
 			brown: "dark",
 			peach: "light",
 			purple: "light",
+			sky: "light",
 		};
 
 		if (theme in custom_themes) {

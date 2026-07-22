@@ -6,6 +6,7 @@ const CUSTOM_THEMES = {
 	brown: "dark",
 	peach: "light",
 	purple: "light",
+	sky: "light",
 };
 
 // Override set_theme to handle custom themes

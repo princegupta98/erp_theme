@@ -1,0 +1,720 @@
+/* ==========================================================
+   MAGNADATA ERP PEACH THEME
+========================================================== */
+
+html[data-theme-mode="peach"] {
+
+    --primary: #FF8C4A;
+
+    --primary-hover: #F97316;
+
+    --background: #FFF8F5;
+
+    --surface: #ffffff;
+
+    --border: #EFEFEF;
+
+    --text: #222;
+
+    --radius: 18px;
+    --shadow: 0 8px 24px rgba(0, 0, 0, .05);
+
+}
+
+/* ==========================================================
+   MAGNADATA PEACH BACKGROUND
+========================================================== */
+
+html[data-theme-mode="peach"],
+html[data-theme-mode="peach"] body {
+
+    background: #FFF9F7 !important;
+
+}
+
+html[data-theme-mode="peach"] .desk-container,
+html[data-theme-mode="peach"] .layout-main,
+html[data-theme-mode="peach"] .layout-main-section {
+
+    background:
+
+        radial-gradient(circle at 100% 15%,
+            rgba(255, 160, 90, .70) 0%,
+            transparent 34%),
+
+        radial-gradient(circle at 0% 100%,
+            rgba(255, 205, 150, .60) 0%,
+            transparent 32%),
+
+        linear-gradient(180deg,
+            #FFF7F3,
+            #FFF8F5,
+            #FFF5EF) !important;
+}
+
+html[data-theme-mode="peach"] .layout-main-section {
+
+    background: rgba(255, 248, 243, .75);
+
+}
+
+/* ==========================================================
+   LIST VIEW
+========================================================== */
+
+/* Toolbar */
+
+html[data-theme-mode="peach"] .list-row-container,
+html[data-theme-mode="peach"] .result,
+html[data-theme-mode="peach"] .frappe-list {
+
+    background: transparent;
+
+}
+
+/* Search */
+
+html[data-theme-mode="peach"] .list-filters input,
+html[data-theme-mode="peach"] input.form-control {
+
+    border-radius: 12px !important;
+
+    border: 1px solid #F3DFD5 !important;
+
+    background: rgba(255, 255, 255, .82);
+
+    backdrop-filter: blur(14px);
+
+}
+
+/* Buttons */
+
+html[data-theme-mode="peach"] .btn-default {
+
+    border-radius: 12px;
+
+    background: rgba(255, 255, 255, .82);
+
+    border: 1px solid #F3DFD5;
+
+}
+
+html[data-theme-mode="peach"] .btn-primary {
+
+    background: linear-gradient(180deg,
+            #FFA366,
+            #FF8C4A) !important;
+
+    border: none;
+
+    color: white;
+
+    border-radius: 12px;
+
+    box-shadow: 0 8px 22px rgba(255, 140, 74, .25);
+
+}
+
+/* ==========================================================
+   DOC TYPE FORM
+========================================================== */
+
+html[data-theme-mode="peach"] .layout-main-section .form-page,
+html[data-theme-mode="peach"] .layout-main-section .page-form,
+html[data-theme-mode="peach"] .form-layout {
+
+    background: transparent !important;
+
+}
+
+/* Main White Card */
+
+html[data-theme-mode="peach"] .form-layout>.form-page,
+html[data-theme-mode="peach"] .form-layout-main,
+html[data-theme-mode="peach"] .form-dashboard-section,
+html[data-theme-mode="peach"] .form-column {
+
+    background: rgba(255, 255, 255, .75) !important;
+
+    backdrop-filter: blur(18px);
+
+    border: 1px solid rgba(255, 255, 255, .7);
+
+    border-radius: 22px;
+
+    box-shadow: 0 12px 35px rgba(0, 0, 0, .05);
+
+}
+
+/* ==========================================================
+   FORM SECTION
+========================================================== */
+
+html[data-theme-mode="peach"] .section-body {
+
+    background: rgba(255, 255, 255, .82);
+
+    border-radius: 18px;
+
+    padding: 20px;
+
+    border: 1px solid #F4ECE7;
+
+    box-shadow: 0 8px 20px rgba(0, 0, 0, .04);
+
+}
+
+html[data-theme-mode="peach"] .section-head {
+
+    color: #222;
+
+    font-weight: 600;
+
+    font-size: 15px;
+
+    margin-bottom: 14px;
+
+}
+
+/* ==========================================================
+   BUTTONS
+========================================================== */
+
+html[data-theme-mode="peach"] .btn-primary {
+
+    background: #FF8C4A !important;
+
+    border: none !important;
+
+    color: white !important;
+
+    border-radius: 12px;
+
+    box-shadow: 0 10px 24px rgba(255, 140, 74, .22);
+
+}
+
+html[data-theme-mode="peach"] .btn-primary:hover {
+
+    background: #F97316 !important;
+
+    transform: translateY(-1px);
+
+}
+
+/* ==========================================================
+   FORM TABS
+========================================================== */
+
+html[data-theme-mode="peach"] .form-tabs-list {
+
+    border-bottom: none;
+
+    margin-bottom: 20px;
+
+}
+
+html[data-theme-mode="peach"] .form-tabs-list .nav-link {
+
+    border-radius: 12px;
+
+    margin-right: 8px;
+
+    color: #666;
+
+    transition: .25s;
+
+}
+
+html[data-theme-mode="peach"] .form-tabs-list .nav-link.active {
+
+    background: #FFE8DA;
+
+    color: #FF8C4A;
+
+    font-weight: 600;
+
+}
+
+/* ==========================================================
+   GLOBAL DESK INPUT STYLE
+========================================================== */
+
+/* All Frappe controls */
+
+html[data-theme-mode="peach"] .frappe-control .form-control,
+html[data-theme-mode="peach"] .frappe-control input,
+html[data-theme-mode="peach"] .frappe-control textarea,
+html[data-theme-mode="peach"] .frappe-control select,
+html[data-theme-mode="peach"] .awesomplete input,
+html[data-theme-mode="peach"] .control-input,
+html[data-theme-mode="peach"] .link-field input {
+
+    background: rgba(255, 255, 255, .92) !important;
+
+    border: 1px solid #F3DDD1 !important;
+
+    border-radius: 14px !important;
+
+    transition: all .25s ease;
+
+}
+
+/* Global Focus */
+
+html[data-theme-mode="peach"] .frappe-control .form-control:focus,
+html[data-theme-mode="peach"] .frappe-control input:focus,
+html[data-theme-mode="peach"] .frappe-control textarea:focus,
+html[data-theme-mode="peach"] .frappe-control select:focus,
+html[data-theme-mode="peach"] .awesomplete input:focus,
+html[data-theme-mode="peach"] .control-input:focus,
+html[data-theme-mode="peach"] .link-field input:focus {
+
+    border-color: #FF8C4A !important;
+
+    box-shadow: 0 0 0 4px rgba(255, 140, 74, .15) !important;
+
+    outline: none !important;
+
+}
+
+/* ==========================================================
+   GLOBAL WRAPPER FOCUS
+========================================================== */
+
+html[data-theme-mode="peach"] .frappe-control.focus,
+html[data-theme-mode="peach"] .control-input-wrapper.focus,
+html[data-theme-mode="peach"] .form-group.focus {
+
+    border-radius: 14px;
+
+}
+
+/* ==========================================================
+   SIDEBAR CHILD MENU
+========================================================== */
+html[data-theme-mode="peach"] .sidebar-child-item {
+
+    color: #666;
+
+    border-radius: 10px;
+
+    transition: .25s;
+
+}
+
+html[data-theme-mode="peach"] .sidebar-child-item:hover {
+
+    background: #FFF1E7;
+
+    color: #FF8C4A;
+
+}
+
+html[data-theme-mode="peach"] .sidebar-child-item.selected {
+
+    background: #FFE4D2;
+
+    color: #FF8C4A;
+
+    font-weight: 600;
+
+}
+
+/* ==========================================================
+   SIDEBAR ARROWS
+========================================================== */
+html[data-theme-mode="peach"] .sidebar-item-control svg,
+html[data-theme-mode="peach"] .indicator-icon svg,
+html[data-theme-mode="peach"] .collapse-indicator svg {
+
+    stroke: #D28A54 !important;
+
+}
+
+/* ==========================================================
+   SIDEBAR LINKS
+========================================================== */
+html[data-theme-mode="peach"] .standard-sidebar-item a {
+
+    color: inherit;
+
+}
+
+html[data-theme-mode="peach"] .standard-sidebar-item:hover a {
+
+    color: #FF8C4A;
+
+}
+
+html[data-theme-mode="peach"] .standard-sidebar-item.selected a {
+
+    color: white !important;
+
+}
+
+/* ==========================================================
+   SIDEBAR BACKGROUND
+========================================================== */
+
+html[data-theme-mode="peach"] .layout-side-section {
+
+    background:
+        linear-gradient(180deg,
+            #FFF3EB 0%,
+            #FFF7F3 35%,
+            #FFF9F7 70%,
+            #FFECDD 100%) !important;
+
+    border-right: 1px solid #F2DED1;
+
+    box-shadow:
+        8px 0 35px rgba(255, 150, 90, .12);
+
+}
+
+/* Sidebar Header */
+
+html[data-theme-mode="peach"] .standard-sidebar-section {
+
+    background: transparent !important;
+
+}
+
+/* Workspace Header */
+
+html[data-theme-mode="peach"] .desk-sidebar .standard-sidebar-label,
+html[data-theme-mode="peach"] .layout-side-section .app-title {
+
+    color: #D46F2C;
+
+    font-weight: 700;
+
+}
+
+/* Search & Notification */
+
+html[data-theme-mode="peach"] .standard-sidebar-item {
+
+    color: #f6bf8e;
+
+}
+
+/* Footer */
+
+html[data-theme-mode="peach"] .sidebar-bottom,
+html[data-theme-mode="peach"] .desk-sidebar-bottom {
+
+    background: rgba(255, 245, 239, .65);
+
+    border-top: 1px solid #F4DDD0;
+
+}
+
+html[data-theme-mode="peach"] .sidebar-bottom .user-info,
+html[data-theme-mode="peach"] .desk-sidebar .user-info {
+
+    background: rgba(255, 255, 255, .60);
+
+    backdrop-filter: blur(14px);
+
+    border-radius: 16px;
+
+}
+
+/* ==========================================================
+   PEACH SIDEBAR BACKGROUND
+========================================================== */
+
+html[data-theme-mode="peach"] .body-sidebar {
+
+    background: linear-gradient(180deg,
+            #FFF1E8 0%,
+            #f0b9a1 35%,
+            #f2ac80 70%,
+            #f38434 100%) !important;
+
+    border-right: 1px solid #F5D8C7;
+
+    box-shadow:
+        10px 0 28px rgba(255, 140, 74, .10);
+
+}
+
+/* Sidebar internal wrappers */
+
+html[data-theme-mode="peach"] .body-sidebar-top,
+html[data-theme-mode="peach"] .body-sidebar-bottom,
+html[data-theme-mode="peach"] .body-sidebar-cards,
+html[data-theme-mode="peach"] .standard-items-sections {
+
+    background: transparent !important;
+
+}
+
+html[data-theme-mode="peach"] .sidebar-header {
+
+    background: transparent !important;
+
+}
+
+html[data-theme-mode="peach"] .sidebar-user-button {
+
+    border-radius: 14px;
+
+    transition: .25s;
+
+}
+
+html[data-theme-mode="peach"] .sidebar-user-button:hover {
+
+    background: #FFE7D8 !important;
+
+}
+
+/* ==========================================================
+   PREMIUM DASHBOARD CARDS
+========================================================== */
+
+html[data-theme-mode="peach"] .dashboard,
+html[data-theme-mode="peach"] .dashboard-graph,
+html[data-theme-mode="peach"] .widget-group,
+html[data-theme-mode="peach"] .widget-group-body,
+html[data-theme-mode="peach"] .widget-group-body.grid-col-1,
+html[data-theme-mode="peach"] .widget-group-body.grid-col-2,
+html[data-theme-mode="peach"] .widget-group-body.grid-col-3 {
+
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+html[data-theme-mode="peach"] .widget,
+html[data-theme-mode="peach"] .dashboard-widget,
+html[data-theme-mode="peach"] .number-widget-box,
+html[data-theme-mode="peach"] .chart-widget {
+
+    position: relative;
+    overflow: hidden;
+
+    background: rgba(255, 255, 255, .90) !important;
+    backdrop-filter: blur(18px);
+
+    border: 1px solid rgba(255, 210, 180, .65) !important;
+
+    border-radius: 22px !important;
+
+    box-shadow:
+        0 8px 18px rgba(255, 140, 74, .08),
+        0 18px 40px rgba(255, 140, 74, .10),
+        inset 0 1px rgba(255, 255, 255, .65) !important;
+    min-height: 125px !important;
+    padding: 24px 28px !important;
+
+    transition: .30s ease;
+}
+
+html[data-theme-mode="peach"] .widget::before,
+html[data-theme-mode="peach"] .number-widget-box::before,
+html[data-theme-mode="peach"] .chart-widget::before {
+
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 7px;
+
+    background: linear-gradient(90deg,
+            #FF6A00 0%,
+            #FF8C4A 25%,
+            #FFA869 60%,
+            #FFD3B5 100%);
+
+    box-shadow:
+        0 2px 10px rgba(255, 106, 0, .35);
+}
+
+html[data-theme-mode="peach"] .widget:hover,
+html[data-theme-mode="peach"] .number-widget-box:hover,
+html[data-theme-mode="peach"] .chart-widget:hover {
+
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 10px 22px rgba(255, 140, 74, .15),
+        0 25px 55px rgba(255, 140, 74, .22) !important;
+}
+
+html[data-theme-mode="peach"] .widget-title,
+html[data-theme-mode="peach"] .widget-title span,
+html[data-theme-mode="peach"] .widget-head .widget-title{
+
+    color:#3A3A3A !important;
+    font-size:16px !important;
+    font-weight:700 !important;
+    line-height:1.4 !important;
+    letter-spacing:.2px !important;
+}
+
+html[data-theme-mode="peach"] .widget-head{
+    margin-bottom:20px !important;
+    align-items:flex-start !important;
+}
+
+html[data-theme-mode="peach"] .number{
+    color:#1F2937 !important;
+    font-size:44px !important;
+    font-weight:700 !important;
+    line-height:1;
+    margin-top:14px !important;
+}
+
+html[data-theme-mode="peach"] .widget-control {
+
+    background: #FFF3EA;
+    border-radius: 10px;
+}
+
+/* ==========================================================
+   TOP TOOLBAR BUTTONS
+========================================================== */
+
+html[data-theme-mode="peach"] .btn-default,
+html[data-theme-mode="peach"] .btn-secondary,
+html[data-theme-mode="peach"] .list-view-actions .btn,
+html[data-theme-mode="peach"] .page-actions .btn,
+html[data-theme-mode="peach"] .page-form .btn-default,
+html[data-theme-mode="peach"] .dropdown-toggle.btn {
+
+    background: linear-gradient(180deg,
+            #faa267,
+            #f69d6a) !important;
+
+    color: #0b0505 !important;
+
+    border: none !important;
+
+    border-radius: 12px;
+
+    box-shadow: 0 8px 20px rgba(255, 140, 74, .25);
+
+}
+
+html[data-theme-mode="peach"] .btn-default:hover,
+html[data-theme-mode="peach"] .btn-secondary:hover,
+html[data-theme-mode="peach"] .dropdown-toggle.btn:hover {
+
+    background: linear-gradient(180deg,
+            #f59e64,
+            #fda86a) !important;
+
+    color: rgb(5, 2, 2) !important;
+
+}
+
+/* ==========================================================
+   FULL DESKTOP PAGE BACKGROUND
+========================================================== */
+
+html[data-theme-mode="peach"] html,
+html[data-theme-mode="peach"] body,
+html[data-theme-mode="peach"] #body,
+html[data-theme-mode="peach"] #page-desktop,
+html[data-theme-mode="peach"] .desktop-page,
+html[data-theme-mode="peach"] .desk-container,
+html[data-theme-mode="peach"] .layout-main,
+html[data-theme-mode="peach"] .layout-main-section {
+
+    min-height: 100vh !important;
+
+    background:
+        radial-gradient(circle at 105% 12%,
+            rgba(255, 145, 70, .85) 0%,
+            rgba(255, 170, 95, .55) 22%,
+            rgba(255, 210, 170, .20) 42%,
+            transparent 58%),
+
+        radial-gradient(circle at -5% 105%,
+            rgba(255, 145, 70, .85) 0%,
+            rgba(255, 170, 95, .55) 22%,
+            rgba(255, 210, 170, .20) 42%,
+            transparent 58%),
+        linear-gradient(180deg,
+            #FFF7F3,
+            #FFF8F5,
+            #FFF5EF) !important;
+
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+
+}
+
+/* ==========================================================
+   FULL PAGE PURPLE BACKGROUND
+========================================================== */
+
+html[data-theme-mode="purple"] html,
+html[data-theme-mode="purple"] body,
+html[data-theme-mode="purple"] #body,
+html[data-theme-mode="purple"] #page-desktop,
+html[data-theme-mode="purple"] .desktop-page,
+html[data-theme-mode="purple"] .desk-container,
+html[data-theme-mode="purple"] .layout-main,
+html[data-theme-mode="purple"] .layout-main-section {
+
+    min-height: 100vh !important;
+
+    background:
+        radial-gradient(circle at 105% 12%,
+            rgba(201, 122, 247, .85) 0%,
+            rgba(221, 170, 255, .55) 22%,
+            rgba(235, 210, 255, .20) 42%,
+            transparent 58%),
+
+        radial-gradient(circle at -5% 105%,
+            rgba(255, 210, 240, .85) 0%,
+            rgba(255, 220, 245, .55) 22%,
+            rgba(255, 235, 250, .20) 42%,
+            transparent 58%),
+
+        linear-gradient(180deg,
+            #FFFBFF,
+            #FBF8FF,
+            #FFF8FD) !important;
+
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+
+}
+
+html[data-theme-mode="peach"] .layout-main-section {
+
+    background:
+        radial-gradient(circle at 100% 18%,
+            rgba(255, 165, 90, .65),
+            transparent 34%),
+
+        radial-gradient(circle at 0% 100%,
+            rgba(255, 205, 155, .55),
+            transparent 34%),
+
+        #FFF8F5 !important;
+
+}
+/* Theme Switcher - Peach Preview */
+.theme-preview.preview-peach .background {
+    background:
+        radial-gradient(circle at bottom left,
+            rgba(255, 140, 0, 0.35) 0%,
+            rgba(255, 180, 120, 0.18) 28%,
+            rgba(255,255,255,0) 55%),
+        radial-gradient(circle at top right,
+            rgba(255, 120, 40, 0.28) 0%,
+            rgba(255,255,255,0) 45%),
+        #ffffff;
+}
+
+.theme-preview.preview-peach .navbar {
+    background: linear-gradient(90deg, #ff6a00, #ffb36b);
+}

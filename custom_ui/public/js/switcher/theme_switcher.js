@@ -26,6 +26,16 @@ frappe.ui.ThemeSwitcher = class extends OriginalThemeSwitcher {
 				name: "sky",
 				label: __("Sky Blue"),
 				info: __("Sky Blue Theme"),
+				name: "peach",
+				label: __("Peach Orange"),
+				info: __("Peach Theme"),
+				preview_class: "preview-peach",
+			},
+			{
+				name: "purple",
+				label: __("Purple"),
+				info: __("Purple Theme"),
+				preview_class: "preview-purple",
 			},
 		);
 	}
@@ -36,6 +46,9 @@ frappe.ui.ThemeSwitcher = class extends OriginalThemeSwitcher {
 			orange: "light",
 			brown: "dark",
 			sky:"light",
+			peach: "light",
+			purple: "light",
+
 		};
 
 		const is_auto_theme = theme.name === "automatic";
@@ -49,7 +62,8 @@ frappe.ui.ThemeSwitcher = class extends OriginalThemeSwitcher {
 		}
 
 		const preview = $(`<div class="${this.current_theme == theme.name ? "selected" : ""}">
-			<div data-theme="${base_theme}"
+			<div class="theme-preview ${theme.preview_class || ""}"
+			data-theme="${base_theme}"
 				data-theme-mode="${theme_mode}"
 				data-is-auto-theme="${is_auto_theme}" title="${theme.info}">
 				<div class="background">
@@ -89,11 +103,14 @@ frappe.ui.ThemeSwitcher = class extends OriginalThemeSwitcher {
 	}
 
 	toggle_theme(theme) {
+		console.log("Selected Theme :", theme);
 		const custom_themes = {
 			blue: "dark",
 			orange: "light",
 			brown: "dark",
 			sky:"light",
+			peach: "light",
+			purple: "light",
 		};
 
 		if (theme in custom_themes) {

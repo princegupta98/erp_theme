@@ -1,0 +1,760 @@
+/* ==========================================================
+   PURPLE VARIABLES
+========================================================== */
+
+html[data-theme-mode="purple"] {
+
+    --primary: #C97AF7;
+    --primary-hover: #B85BEF;
+
+    --background: #FBF8FF;
+
+    --surface: #FFFFFF;
+
+    --border: #EEDCFA;
+
+    --text: #2F2F38;
+
+    --radius: 18px;
+
+    --shadow: 0 12px 30px rgba(190, 120, 255, .12);
+
+}
+
+/* ==========================================================
+   BODY
+========================================================== */
+
+html[data-theme-mode="purple"],
+html[data-theme-mode="purple"] body {
+
+    background: #FBF8FF !important;
+
+}
+
+/* ==========================================================
+   PAGE BACKGROUND
+========================================================== */
+
+html[data-theme-mode="purple"] .layout-main-section {
+
+    position: relative;
+
+    overflow: visible !important;
+    min-height: 100vh !important;
+    height: auto !important;
+    padding-bottom: 80px !important;
+
+    background: #FFFBFF !important;
+
+}
+
+/* ==========================================================
+   PURPLE DESK BACKGROUND
+========================================================== */
+
+html[data-theme-mode="purple"] .desk-container,
+html[data-theme-mode="purple"] .desk-page,
+html[data-theme-mode="purple"] .desk-app,
+html[data-theme-mode="purple"] .desk-sidebar+.layout-main,
+html[data-theme-mode="purple"] .layout-main {
+
+    background: #FFFBFF !important;
+}
+
+html[data-theme-mode="purple"] .desk-container,
+html[data-theme-mode="purple"] .layout-main {
+
+    position: relative;
+    overflow: hidden;
+}
+
+html[data-theme-mode="purple"] .desk-container::before,
+html[data-theme-mode="purple"] .layout-main::before {
+
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+
+    background:
+        radial-gradient(circle at 88% 20%,
+            rgba(201, 122, 247, .65) 0%,
+            rgba(201, 122, 247, .35) 28%,
+            transparent 55%),
+
+        radial-gradient(circle at 10% 88%,
+            rgba(255, 210, 240, .65) 0%,
+            rgba(255, 210, 240, .30) 28%,
+            transparent 55%);
+}
+
+/* ==========================================================
+   RIGHT PURPLE CIRCLE
+========================================================== */
+
+html[data-theme-mode="purple"] .layout-main-section::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: -260px;
+
+    right: -260px;
+
+    width: 950px;
+
+    height: 950px;
+
+    border-radius: 50%;
+
+    background:
+
+        radial-gradient(circle,
+
+            #C97AF7 0%,
+
+            #DFA9FF 45%,
+
+            rgba(201, 122, 247, .20) 70%,
+
+            transparent 100%);
+
+    filter: blur(20px);
+
+    pointer-events: none;
+
+}
+
+/* ==========================================================
+   LEFT PINK CIRCLE
+========================================================== */
+
+html[data-theme-mode="purple"] .layout-main-section::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: -250px;
+
+    bottom: -260px;
+
+    width: 720px;
+
+    height: 720px;
+
+    border-radius: 50%;
+
+    background:
+
+        radial-gradient(circle,
+
+            #FFD9F2 0%,
+
+            #F4C7FF 45%,
+
+            rgba(255, 215, 240, .15) 70%,
+
+            transparent 100%);
+
+    filter: blur(22px);
+
+    pointer-events: none;
+
+}
+
+/* ==========================================================
+   CONTENT ABOVE BACKGROUND
+========================================================== */
+
+html[data-theme-mode="purple"] .layout-main-section>* {
+
+    position: relative;
+
+    z-index: 5;
+
+}
+
+/* ==========================================================
+   PREMIUM PURPLE DASHBOARD CARDS
+========================================================== */
+
+html[data-theme-mode="purple"] .dashboard,
+html[data-theme-mode="purple"] .dashboard-graph,
+html[data-theme-mode="purple"] .widget-group,
+html[data-theme-mode="purple"] .widget-group-body,
+html[data-theme-mode="purple"] .widget-group-body.grid-col-1,
+html[data-theme-mode="purple"] .widget-group-body.grid-col-2,
+html[data-theme-mode="purple"] .widget-group-body.grid-col-3 {
+
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+html[data-theme-mode="purple"] .widget,
+html[data-theme-mode="purple"] .dashboard-widget,
+html[data-theme-mode="purple"] .number-widget-box,
+html[data-theme-mode="purple"] .chart-widget {
+
+    position: relative;
+    overflow: hidden;
+
+    background: rgba(255, 255, 255, .90) !important;
+    backdrop-filter: blur(18px);
+
+    border: 1px solid rgba(223, 205, 255, .70) !important;
+
+    border-radius: 22px !important;
+
+    box-shadow:
+        0 8px 18px rgba(186, 120, 255, .10),
+        0 18px 40px rgba(186, 120, 255, .12),
+        inset 0 1px rgba(255, 255, 255, .65) !important;
+
+    min-height: 125px !important;
+    padding: 24px 28px !important;
+
+    transition: .30s ease;
+}
+
+html[data-theme-mode="purple"] .widget::before,
+html[data-theme-mode="purple"] .number-widget-box::before,
+html[data-theme-mode="purple"] .chart-widget::before {
+
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 7px;
+
+    background: linear-gradient(90deg,
+            #A855F7 0%,
+            #C97AF7 30%,
+            #DDA4FF 65%,
+            #F3DBFF 100%);
+
+    box-shadow: 0 2px 10px rgba(169, 85, 247, .35);
+}
+
+html[data-theme-mode="purple"] .widget:hover,
+html[data-theme-mode="purple"] .number-widget-box:hover,
+html[data-theme-mode="purple"] .chart-widget:hover {
+
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 10px 24px rgba(186, 120, 255, .16),
+        0 24px 55px rgba(186, 120, 255, .22) !important;
+}
+
+/* Card Heading */
+
+html[data-theme-mode="purple"] .widget-title {
+    color: #3E3752 !important;
+    font-size: 16px !important;
+    font-weight: 700 !important;
+    line-height: 1.4 !important;
+}
+
+/* Card Number */
+
+html[data-theme-mode="purple"] .number {
+    color: #242033 !important;
+    font-size: 42px !important;
+    font-weight: 700 !important;
+    margin-top: 16px !important;
+}
+
+/* Header spacing */
+
+html[data-theme-mode="purple"] .widget-head {
+    margin-bottom: 22px !important;
+    align-items: flex-start !important;
+}
+
+/* ==========================================================
+   BUTTONS
+========================================================== */
+
+html[data-theme-mode="purple"] .btn-primary {
+
+    background:
+
+        linear-gradient(180deg,
+
+            #D18BFF,
+
+            #B86AF4) !important;
+
+}
+
+html[data-theme-mode="purple"] .btn-primary:hover {
+
+    background:
+
+        linear-gradient(180deg,
+
+            #C778F5,
+
+            #A85BED) !important;
+
+}
+
+/* ==========================================================
+   INPUTS
+========================================================== */
+
+html[data-theme-mode="purple"] .form-control {
+
+    background: rgba(255, 255, 255, .92);
+
+    border: 1px solid #E6D2FF;
+
+}
+
+html[data-theme-mode="purple"] .form-control:focus {
+
+    border-color: #C97AF7;
+
+    box-shadow:
+
+        0 0 0 4px rgba(201, 122, 247, .18);
+
+}
+
+
+/* ==========================================================
+   APP ICONS
+========================================================== */
+
+html[data-theme-mode="purple"] .app-icon {
+
+    background:
+
+        rgba(214, 170, 255, .20);
+
+    color: #A75AF2;
+
+}
+
+/* ==========================================================
+   FULL PAGE BACKGROUND
+========================================================== */
+
+html[data-theme-mode="purple"],
+html[data-theme-mode="purple"] body,
+html[data-theme-mode="purple"] #body,
+html[data-theme-mode="purple"] .app,
+html[data-theme-mode="purple"] .layout-main,
+html[data-theme-mode="purple"] .layout-main-section,
+html[data-theme-mode="purple"] .desk-container {
+
+    min-height: 100vh !important;
+    overflow: visible !important;
+}
+
+/* ==========================================================
+   PURPLE BACKGROUND CIRCLES
+========================================================== */
+
+html[data-theme-mode="purple"] body {
+    position: relative;
+    overflow-x: hidden;
+}
+
+html[data-theme-mode="purple"] body::before {
+
+    content: "";
+
+    position: fixed;
+
+    top: -220px;
+    right: -250px;
+
+    width: 900px;
+    height: 900px;
+
+    border-radius: 50%;
+
+    background: #C987F8;
+
+    opacity: .65;
+
+    z-index: -1;
+}
+
+html[data-theme-mode="purple"] body::after {
+
+    content: "";
+
+    position: fixed;
+
+    left: -260px;
+    bottom: -250px;
+
+    width: 700px;
+    height: 700px;
+
+    border-radius: 50%;
+
+    background: #FFD8F2;
+
+    opacity: .70;
+
+    z-index: -1;
+}
+
+/* ==========================================================
+   TRANSPARENT PAGE CONTAINERS
+========================================================== */
+
+html[data-theme-mode="purple"] .page-content,
+html[data-theme-mode="purple"] .layout-main-section-wrapper,
+html[data-theme-mode="purple"] .desk-page,
+html[data-theme-mode="purple"] .page-container,
+html[data-theme-mode="purple"] .workspace-body,
+html[data-theme-mode="purple"] .dashboard {
+
+    background: transparent !important;
+
+}
+
+/* ==========================================================
+   DASHBOARD TRANSPARENT
+========================================================== */
+
+html[data-theme-mode="purple"] .dashboard-widget {
+
+    background: rgba(255, 255, 255, .82) !important;
+
+    backdrop-filter: blur(18px);
+
+    border: 1px solid rgba(230, 210, 255, .55);
+
+    border-radius: 22px;
+
+}
+
+html[data-theme-mode="purple"] .page-body,
+html[data-theme-mode="purple"] .page-wrapper,
+html[data-theme-mode="purple"] .layout-main {
+    overflow: visible !important;
+    height: auto !important;
+    min-height: 100vh !important;
+    background: transparent !important;
+
+}
+
+/* ==========================================================
+   DASHBOARD WIDGET GROUP
+========================================================== */
+
+html[data-theme-mode="purple"] .dashboard-graph,
+html[data-theme-mode="purple"] .widget-group,
+html[data-theme-mode="purple"] .widget-group-body,
+html[data-theme-mode="purple"] .widget-group-body.grid-col-3 {
+
+    background: transparent !important;
+
+    box-shadow: none !important;
+
+    border: none !important;
+
+}
+
+/* ==========================================================
+   DASHBOARD SMALL CARDS
+========================================================== */
+
+html[data-theme-mode="purple"] .dashboard-graph .widget,
+html[data-theme-mode="purple"] .dashboard-graph .number-widget-box {
+
+    background: rgba(255, 255, 255, .78) !important;
+
+    backdrop-filter: blur(18px);
+
+    -webkit-backdrop-filter: blur(18px);
+
+    border: 1px solid rgba(235, 215, 255, .70);
+
+    border-radius: 18px;
+
+    box-shadow: 0 12px 30px rgba(180, 120, 255, .10);
+
+}
+
+/* ==========================================================
+   DASHBOARD CHARTS
+========================================================== */
+
+html[data-theme-mode="purple"] .dashboard-widget,
+html[data-theme-mode="purple"] .chart-widget {
+
+    background: rgba(255, 255, 255, .78) !important;
+
+    backdrop-filter: blur(18px);
+
+    -webkit-backdrop-filter: blur(18px);
+
+    border: 1px solid rgba(235, 215, 255, .70);
+
+    border-radius: 20px;
+
+    box-shadow: 0 12px 30px rgba(180, 120, 255, .10);
+
+}
+
+/* ==========================================================
+   DASHBOARD WRAPPERS
+========================================================== */
+
+html[data-theme-mode="purple"] .dashboard,
+html[data-theme-mode="purple"] .dashboard-graph,
+html[data-theme-mode="purple"] .widget-group,
+html[data-theme-mode="purple"] .widget-group-body,
+html[data-theme-mode="purple"] .widget-group-body.grid-col-3,
+html[data-theme-mode="purple"] .widget-group-body.grid-col-2,
+html[data-theme-mode="purple"] .widget-group-body.grid-col-1 {
+
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+
+}
+
+/* ==========================================================
+   PURPLE SIDEBAR
+========================================================== */
+
+html[data-theme-mode="purple"] .body-sidebar {
+
+    background: linear-gradient(180deg,
+            #FDFBFF 0%,
+            #F7F0FF 25%,
+            #F0E0FF 55%,
+            #E5CCFF 80%,
+            #D7B2FF 100%) !important;
+
+    border-right: 1px solid #E8D8FA !important;
+
+    box-shadow:
+        10px 0 30px rgba(180, 110, 255, .14);
+
+}
+
+/* Sidebar Wrappers */
+
+html[data-theme-mode="purple"] .body-sidebar-top,
+html[data-theme-mode="purple"] .body-sidebar-bottom,
+html[data-theme-mode="purple"] .body-sidebar-cards,
+html[data-theme-mode="purple"] .standard-items-sections,
+html[data-theme-mode="purple"] .standard-sidebar-section,
+html[data-theme-mode="purple"] .sidebar-header {
+
+    background: transparent !important;
+
+}
+
+/* Sidebar Title */
+
+html[data-theme-mode="purple"] .desk-sidebar .standard-sidebar-label,
+html[data-theme-mode="purple"] .layout-side-section .app-title {
+
+    color: #8A45E6;
+    font-weight: 700;
+
+}
+
+/* Sidebar Items */
+
+html[data-theme-mode="purple"] .standard-sidebar-item {
+
+    border-radius: 12px;
+    transition: .25s ease;
+    color: #5B5870;
+
+}
+
+/* Hover */
+
+html[data-theme-mode="purple"] .standard-sidebar-item:hover {
+
+    background: #F5EAFF !important;
+    color: #9A4DF0;
+
+}
+
+/* Selected */
+
+html[data-theme-mode="purple"] .standard-sidebar-item.selected {
+
+    background: linear-gradient(90deg,
+            #D78EFF,
+            #BF6FFF) !important;
+
+    color: #fff !important;
+
+    box-shadow: 0 8px 18px rgba(190, 110, 255, .18);
+
+}
+
+/* Links */
+
+html[data-theme-mode="purple"] .standard-sidebar-item a {
+
+    color: inherit;
+
+}
+
+html[data-theme-mode="purple"] .standard-sidebar-item:hover a {
+
+    color: #9A4DF0;
+
+}
+
+html[data-theme-mode="purple"] .standard-sidebar-item.selected a {
+
+    color: #fff !important;
+
+}
+
+/* Child Menu */
+
+html[data-theme-mode="purple"] .sidebar-child-item {
+
+    border-radius: 10px;
+    color: #6A6682;
+    transition: .25s;
+
+}
+
+html[data-theme-mode="purple"] .sidebar-child-item:hover {
+
+    background: #F4E7FF;
+    color: #A65AF4;
+
+}
+
+html[data-theme-mode="purple"] .sidebar-child-item.selected {
+
+    background: #EBD4FF;
+    color: #9A4DF0;
+    font-weight: 600;
+
+}
+
+/* Icons */
+
+html[data-theme-mode="purple"] .sidebar-item-control svg,
+html[data-theme-mode="purple"] .indicator-icon svg,
+html[data-theme-mode="purple"] .collapse-indicator svg {
+
+    stroke: #B066F5 !important;
+
+}
+
+/* User Section */
+
+html[data-theme-mode="purple"] .sidebar-bottom,
+html[data-theme-mode="purple"] .desk-sidebar-bottom {
+
+    background: rgba(245, 236, 255, .65);
+    border-top: 1px solid #E8D8FA;
+
+}
+
+html[data-theme-mode="purple"] .sidebar-bottom .user-info,
+html[data-theme-mode="purple"] .desk-sidebar .user-info {
+
+    background: rgba(255, 255, 255, .55);
+
+    backdrop-filter: blur(14px);
+
+    border-radius: 16px;
+
+}
+
+/* User Button */
+
+html[data-theme-mode="purple"] .sidebar-user-button {
+
+    border-radius: 14px;
+    transition: .25s;
+
+}
+
+html[data-theme-mode="purple"] .sidebar-user-button:hover {
+
+    background: #F2E6FF !important;
+
+}
+
+/* Active Sidebar Item */
+
+html[data-theme-mode="purple"] .standard-sidebar-item.selected,
+html[data-theme-mode="purple"] .standard-sidebar-item.active,
+html[data-theme-mode="purple"] .standard-sidebar-item.router-link-active,
+html[data-theme-mode="purple"] .standard-sidebar-item[aria-current="page"] {
+
+    background: linear-gradient(90deg,
+            #D88DFF,
+            #BC69FF) !important;
+
+    color: #fff !important;
+
+    box-shadow: 0 10px 24px rgba(185, 110, 255, .28);
+
+}
+
+html[data-theme-mode="purple"] .standard-sidebar-item.selected svg,
+html[data-theme-mode="purple"] .standard-sidebar-item.active svg,
+html[data-theme-mode="purple"] .standard-sidebar-item.router-link-active svg {
+
+    color: #fff !important;
+    fill: #cf49c9 !important;
+
+}
+
+html[data-theme-mode="purple"] .body-sidebar {
+
+    position: relative;
+    overflow: hidden;
+}
+
+html[data-theme-mode="purple"] .body-sidebar::after {
+
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+
+    background:
+        radial-gradient(circle at 100% 100%,
+            rgba(185, 110, 255, .22),
+            transparent 55%),
+
+        radial-gradient(circle at 0% 0%,
+            rgba(255, 255, 255, .55),
+            transparent 50%);
+}
+/* Theme Switcher - Purple Preview */
+.theme-preview.preview-purple .background {
+    background:
+        radial-gradient(circle at bottom left,
+            rgba(140, 70, 255, 0.35) 0%,
+            rgba(180, 120, 255, 0.18) 30%,
+            rgba(255,255,255,0) 55%),
+        radial-gradient(circle at top right,
+            rgba(170, 80, 255, 0.28) 0%,
+            rgba(255,255,255,0) 45%),
+        #ffffff;
+}
+
+.theme-preview.preview-purple .navbar {
+    background: linear-gradient(90deg, #8b3dff, #d49cff);
+}

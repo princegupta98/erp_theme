@@ -11,6 +11,8 @@ app_include_css = [
 
 app_include_js = [
 	"custom_ui.bundle.js",
+	# "/assets/custom_ui/js/folder_popup_icons.js",
+	# "/assets/custom_ui/js/branding.js"
 	"desk_custom.bundle.js",
 	"sidebar_custom.bundle.js",
 	"chatbot_widget.bundle.jsx",

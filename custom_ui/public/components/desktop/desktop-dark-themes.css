@@ -1,0 +1,55 @@
+/* ==========================================================
+   DARK THEME DESKTOP TEXT
+   Desk + Drawer icon names
+========================================================== */
+
+
+/* ==========================================================
+   TIMELESS NIGHT
+========================================================== */
+
+html[data-theme-mode="dark"]
+#page-desktop
+.desktop-icon
+.icon-title,
+
+html[data-theme-mode="dark"]
+.desktop-modal-body
+.desktop-icon
+.icon-title {
+    color: #ffffff !important;
+}
+
+
+/* ==========================================================
+   OCEAN BLUE
+========================================================== */
+
+html[data-theme-mode="blue"]
+#page-desktop
+.desktop-icon
+.icon-title,
+
+html[data-theme-mode="blue"]
+.desktop-modal-body
+.desktop-icon
+.icon-title {
+    color: #ffffff !important;
+}
+
+
+/* ==========================================================
+   AUTOMATIC
+========================================================== */
+
+html[data-theme-mode="automatic"]
+#page-desktop
+.desktop-icon
+.icon-title,
+
+html[data-theme-mode="automatic"]
+.desktop-modal-body
+.desktop-icon
+.icon-title {
+    color: #ffffff !important;
+}

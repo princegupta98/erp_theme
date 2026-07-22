@@ -1,0 +1,209 @@
+/* ==========================================================
+   ACCOUNTS SETUP CUSTOM ICON
+========================================================== */
+
+
+/* ==========================================================
+   BASE CUSTOM ICON
+========================================================== */
+
+.accounts-setup-icon {
+    width: 28px !important;
+    height: 28px !important;
+
+    display: block !important;
+
+    color: white !important;
+    stroke: white !important;
+}
+
+
+/* ==========================================================
+   HIDE FALLBACK ALPHABET IN DRAWER
+========================================================== */
+
+.desktop-modal-body
+.desktop-icon[data-id="Accounts Setup"]
+.icon-container
+.desktop-alphabet {
+    display: none !important;
+
+    opacity: 0 !important;
+    visibility: hidden !important;
+}
+
+
+/* ==========================================================
+   CUSTOM GEAR ICON
+========================================================== */
+
+.desktop-modal-body
+.desktop-icon[data-id="Accounts Setup"]
+.accounts-setup-icon {
+    display: block !important;
+
+    width: 28px !important;
+    height: 28px !important;
+
+    color: #ffffff !important;
+
+    fill: none !important;
+    stroke: #ffffff !important;
+}
+
+
+/* ==========================================================
+   ACCOUNTS SETUP DRAWER CARD
+========================================================== */
+
+.desktop-modal-body
+.desktop-icon[data-id="Accounts Setup"] {
+    width: 76px !important;
+    height: 92px !important;
+
+    display: flex !important;
+
+    flex-direction: column !important;
+
+    align-items: center !important;
+    justify-content: flex-start !important;
+
+    padding: 0 !important;
+    margin: 0 !important;
+
+    transform: translateY(8px) !important;
+
+    box-sizing: border-box !important;
+}
+
+
+/* ==========================================================
+   ACCOUNTS SETUP OUTER ICON AREA
+========================================================== */
+
+.desktop-modal-body
+.desktop-icon[data-id="Accounts Setup"]
+> .icon-container {
+    width: 68px !important;
+    height: 64px !important;
+
+    min-width: 68px !important;
+    min-height: 64px !important;
+
+    max-width: 68px !important;
+    max-height: 64px !important;
+
+    display: flex !important;
+
+    align-items: center !important;
+    justify-content: center !important;
+
+    margin: 0 auto !important;
+    padding: 0 !important;
+
+    background: transparent !important;
+
+    border: none !important;
+    outline: none !important;
+
+    border-radius: 12px !important;
+
+    box-sizing: border-box !important;
+
+    transform: none !important;
+}
+
+
+/* ==========================================================
+   ACTUAL BLUE ACCOUNTS SETUP ICON
+========================================================== */
+
+.desktop-modal-body
+.desktop-icon[data-id="Accounts Setup"]
+> .icon-container
+.accounts-setup-icon {
+    width: 52px !important;
+    height: 52px !important;
+
+    min-width: 52px !important;
+    min-height: 52px !important;
+
+    max-width: 52px !important;
+    max-height: 52px !important;
+
+    padding: 10px !important;
+    margin: 0 !important;
+
+    display: block !important;
+
+    color: white !important;
+
+    background: #078cf0 !important;
+
+    border-radius: 11px !important;
+
+    position: static !important;
+
+    transform: none !important;
+
+    box-sizing: border-box !important;
+}
+
+
+/* ==========================================================
+   KEEP TITLE BELOW ICON
+========================================================== */
+
+.desktop-modal-body
+.desktop-icon[data-id="Accounts Setup"]
+.icon-caption {
+    width: 100% !important;
+
+    margin-top: 4px !important;
+
+    text-align: center !important;
+
+    transform: none !important;
+}
+
+
+/* ==========================================================
+   PEACH THEME
+   KEEP GEAR BLUE/WHITE
+========================================================== */
+
+html[data-theme-mode="peach"]
+.desktop-modal-body
+.desktop-icon[data-id="Accounts Setup"]:hover
+.accounts-setup-icon {
+    background: #0289f7 !important;
+}
+
+
+/* ==========================================================
+   MAIN DESK ACCOUNTING PREVIEW
+   ACCOUNTS SETUP MINI ICON
+========================================================== */
+
+#page-desktop
+.desktop-icon[data-id="Accounting"]
+.icons-container
+.desktop-icon[data-id="Accounts Setup"]
+.icon-container {
+    background: #0289f7 !important;
+    background-color: #0289f7 !important;
+}
+
+
+/* Mini gear size */
+
+#page-desktop
+.desktop-icon[data-id="Accounting"]
+.icons-container
+.desktop-icon[data-id="Accounts Setup"]
+.accounts-setup-icon {
+    width: 14px !important;
+    height: 14px !important;
+
+    min-width: 14px !important;
+}

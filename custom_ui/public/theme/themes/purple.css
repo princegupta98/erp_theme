@@ -582,11 +582,58 @@ html[data-theme-mode="purple"] .standard-sidebar-item {
 
 /* Hover */
 
+/* ==========================================================
+   PURPLE SIDEBAR ITEM HOVER
+   Mouse hover = Purple Box
+========================================================== */
+
 html[data-theme-mode="purple"] .standard-sidebar-item:hover {
 
-    background: #F5EAFF !important;
-    color: #9A4DF0;
+    background: linear-gradient(
+        90deg,
+        #D98EFF 0%,
+        #C979F7 50%,
+        #BD68F3 100%
+    ) !important;
 
+    color: #ffffff !important;
+
+    border-radius: 7px !important;
+
+    box-shadow:
+        0 4px 12px rgba(190, 105, 245, 0.20) !important;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        box-shadow 0.2s ease !important;
+}
+
+
+/* Hover मधला text white */
+
+html[data-theme-mode="purple"] .standard-sidebar-item:hover a,
+html[data-theme-mode="purple"] .standard-sidebar-item:hover span,
+html[data-theme-mode="purple"] .standard-sidebar-item:hover .sidebar-item-label {
+
+    color: #ffffff !important;
+}
+
+
+/* Hover मधले icons white */
+
+html[data-theme-mode="purple"] .standard-sidebar-item:hover svg {
+
+    color: #ffffff !important;
+    stroke: #ffffff !important;
+}
+
+
+/* जर SVG fill based icon असेल */
+
+html[data-theme-mode="purple"] .standard-sidebar-item:hover svg path {
+
+    stroke: #ffffff !important;
 }
 
 /* Selected */
@@ -611,11 +658,11 @@ html[data-theme-mode="purple"] .standard-sidebar-item a {
 
 }
 
-html[data-theme-mode="purple"] .standard-sidebar-item:hover a {
+/* html[data-theme-mode="purple"] .standard-sidebar-item:hover a {
 
     color: #9A4DF0;
 
-}
+} */
 
 html[data-theme-mode="purple"] .standard-sidebar-item.selected a {
 
@@ -757,4 +804,9 @@ html[data-theme-mode="purple"] .body-sidebar::after {
 
 .theme-preview.preview-purple .navbar {
     background: linear-gradient(90deg, #8b3dff, #d49cff);
+}
+/* Hide empty workspace widgets/cards */
+html[data-theme-mode="peach"] .widget:empty,
+html[data-theme-mode="purple"] .widget:empty {
+    display: none !important;
 }

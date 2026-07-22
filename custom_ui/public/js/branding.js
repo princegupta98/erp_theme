@@ -125,3 +125,43 @@ helpMenuObserver.observe(document.body, {
     childList: true,
     subtree: true
 });
+function removeAppSwitcher() {
+    document.querySelectorAll("a, button, .standard-sidebar-item").forEach((element) => {
+        const text = element.textContent.trim();
+
+        if (
+            text === "Switch to Frappe CRM" ||
+            text === "Switch to ERPNext" ||
+            text === "Switch to Frappe"
+        ) {
+            element.style.setProperty("display", "none", "important");
+
+            const parent =
+                element.closest("li") ||
+                element.closest(".standard-sidebar-item") ||
+                element.parentElement;
+
+            if (parent) {
+                parent.style.setProperty("display", "none", "important");
+            }
+        }
+    });
+}
+// Initial
+removeAppSwitcher();
+
+// Every route change
+$(document).on("app_ready", () => {
+    replaceFrameworkBranding();
+    removeAppSwitcher();
+});
+
+// Observe DOM changes
+const appSwitcherObserver = new MutationObserver(() => {
+    removeAppSwitcher();
+});
+
+appSwitcherObserver.observe(document.body, {
+    childList: true,
+    subtree: true
+});

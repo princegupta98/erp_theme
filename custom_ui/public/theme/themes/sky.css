@@ -409,3 +409,23 @@ html[data-theme-mode="sky"] .primary-action:active {
 
 }
 
+.body-sidebar .sidebar-header .sidebar-item-label.header-subtitle {
+    display: none !important;
+}
+
+/* Frappe HR icon - match blue theme */
+.desktop-icon[data-id="Frappe HR"] img.app-icon {
+    filter: hue-rotate(67deg) saturate(1.8) !important;
+}
+
+.desktop-icon[data-id="Expenses"] img.app-icon,
+.desktop-icon[data-id="HR Setup"] img.app-icon,
+.desktop-icon[data-id="Leaves"] img.app-icon,
+.desktop-icon[data-id="Payroll"] img.app-icon,
+.desktop-icon[data-id="Performance"] img.app-icon,
+.desktop-icon[data-id="Recruitment"] img.app-icon,
+.desktop-icon[data-id="Shift & Attendance"] img.app-icon,
+.desktop-icon[data-id="Tax & Benefits"] img.app-icon,
+.desktop-icon[data-id="Tenure"] img.app-icon {
+    filter: hue-rotate(67deg) saturate(1.8) !important;
+}

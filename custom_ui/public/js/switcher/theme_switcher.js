@@ -12,16 +12,16 @@ frappe.ui.ThemeSwitcher = class extends OriginalThemeSwitcher {
 				label: __("Ocean Blue"),
 				info: __("Blue Theme"),
 			},
-			{
-				name: "orange",
-				label: __("Ollive Green"),
-				info: __("Orange Theme"),
-			},
-			{
-				name: "brown",
-				label: __("Coffee Brown"),
-				info: __("Brown Theme"),
-			},
+			// {
+			// 	name: "orange",
+			// 	label: __("Ollive Green"),
+			// 	info: __("Orange Theme"),
+			// },
+			// {
+			// 	name: "brown",
+			// 	label: __("Coffee Brown"),
+			// 	info: __("Brown Theme"),
+			// },
 			{
 				name: "peach",
 				label: __("Peach Orange"),

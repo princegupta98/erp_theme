@@ -1,0 +1,5 @@
+/* Hide Frappe promotional banner globally */
+.promotional-banners,
+.promotional-banner {
+    display: none !important;
+}

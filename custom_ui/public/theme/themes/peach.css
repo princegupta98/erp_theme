@@ -718,3 +718,6 @@ html[data-theme-mode="peach"] .layout-main-section {
 .theme-preview.preview-peach .navbar {
     background: linear-gradient(90deg, #ff6a00, #ffb36b);
 }
+html[data-theme-mode="peach"] .widget.spacer {
+    display: none !important;
+}

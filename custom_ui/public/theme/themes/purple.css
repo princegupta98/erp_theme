@@ -758,3 +758,6 @@ html[data-theme-mode="purple"] .body-sidebar::after {
 .theme-preview.preview-purple .navbar {
     background: linear-gradient(90deg, #8b3dff, #d49cff);
 }
+html[data-theme-mode="purple"] .widget.spacer {
+    display: none !important;
+}

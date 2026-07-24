@@ -2,10 +2,11 @@ frappe.provide("custom_ui.theme");
 
 const CUSTOM_THEMES = {
 	blue: "dark",
-	orange: "light",
-	brown: "dark",
+	// orange: "light",
+	// brown: "dark",
 	peach: "light",
 	purple: "light",
+	sky: "light",
 };
 
 // Override set_theme to handle custom themes

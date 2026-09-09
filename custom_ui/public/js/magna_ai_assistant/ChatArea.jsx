@@ -15,12 +15,11 @@ import { motion, AnimatePresence } from 'framer-motion';
 // with "Failed to fetch". Use "localhost" if the backend runs on the
 // same machine as the browser, or the server's real IP/hostname if not.
 // ============================================================
-const API_BASE_URL = 'https://ai.tjdem.online';
+const API_BASE_URL = (typeof window !== 'undefined' && ['localhost', '127.0.0.1', 'magna.local'].includes(window.location.hostname))
+    ? 'http://localhost:8050'
+    : 'https://ai.tjdem.online';
 // const API_BASE_URL = 'http://localhost:8050';
-// const API_BASE_URL = 'https://magnaerp.tjdem.online';
-// const API_BASE_URL = 'http://localhost:8005';   // e.g. backend on another machine on your LAN
-// const API_BASE_URL = 'https://mmn2qbq4-8005.inc1.devtunnels.ms';  
-// const API_BASE_URL = 'https://api.yourdomain.com'; // e.g. deployed backend
+// const API_BASE_URL = 'https://ai.tjdem.online';
 
 // Theme-adaptive categorical palette for chart series/slices. The first
 // color always follows the active theme's primary color via color-mix();

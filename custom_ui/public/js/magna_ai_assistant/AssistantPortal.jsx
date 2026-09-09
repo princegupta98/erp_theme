@@ -34,10 +34,19 @@ const normalizeTranscript = (value = '') => {
     return text ? text.charAt(0).toUpperCase() + text.slice(1) : '';
 };
 
-// This assistant is English-first. Do not inherit a device/browser locale
-// such as hi-IN because speech engines may then transliterate perfectly valid
-// English words into another script. en-IN keeps Indian-English pronunciation
-// support while still explicitly constraining recognition to English.
+// Helper to resolve current Frappe Desk logged-in user and session cookie (sid)
+const getFrappeSessionContext = () => {
+    const user = window.frappe?.session?.user || 'Guest';
+    let sid = '';
+    try {
+        const parts = `; ${document.cookie}`.split('; sid=');
+        if (parts.length === 2) sid = parts.pop().split(';').shift();
+    } catch (e) {
+        // Fallback or cross-origin restrictions
+    }
+    return { user, sid };
+};
+
 const SPEECH_RECOGNITION_LANGUAGE = 'en-IN';
 
 const normalizeAssistantReply = (value = '') => {
@@ -603,11 +612,22 @@ export default function AssistantPortal({ isOpen, onClose }) {
         };
         resetInactivityTimer();
 
+        const { user: frappeUser, sid: frappeSid } = getFrappeSessionContext();
         try {
             const response = await fetch(`${API_BASE_URL}/api/chat/stream`, {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ message: userPrompt, session_id: chatId }),
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-Frappe-User': frappeUser,
+                    ...(frappeSid ? { 'X-Frappe-Session-Id': frappeSid } : {}),
+                },
+                credentials: 'include',
+                body: JSON.stringify({
+                    message: userPrompt,
+                    session_id: chatId,
+                    user_id: frappeUser,
+                    sid: frappeSid,
+                }),
                 signal: controller.signal,
             });
 
@@ -743,12 +763,20 @@ export default function AssistantPortal({ isOpen, onClose }) {
 
                 for (let i = 0; i < attachedFiles.length; i++) {
                     const file = attachedFiles[i];
+                    const { user: frappeUser, sid: frappeSid } = getFrappeSessionContext();
                     const formData = new FormData();
                     formData.append('file', file);
                     formData.append('session_id', activeId);
+                    if (frappeUser) formData.append('user_id', frappeUser);
+                    if (frappeSid) formData.append('sid', frappeSid);
 
                     const res = await fetch(`${API_BASE_URL}/api/upload-document`, {
                         method: 'POST',
+                        credentials: 'include',
+                        headers: {
+                            'X-Frappe-User': frappeUser,
+                            ...(frappeSid ? { 'X-Frappe-Session-Id': frappeSid } : {}),
+                        },
                         body: formData,
                     });
 
@@ -1145,6 +1173,10 @@ export default function AssistantPortal({ isOpen, onClose }) {
         createVoiceChat(sessionId);
 
         const voiceParams = new URLSearchParams({ session_id: sessionId });
+        const { user: frappeUser, sid: frappeSid } = getFrappeSessionContext();
+        if (frappeUser) voiceParams.append('user_id', frappeUser);
+        if (frappeSid) voiceParams.append('sid', frappeSid);
+
         const hostUrl = API_BASE_URL.replace('http://', 'ws://').replace('https://', 'wss://') || `ws://${window.location.host || 'ai.tjdem.online'}`;
         const socket = new WebSocket(`${hostUrl}/ws/voice?${voiceParams.toString()}`);
         voiceSocketRef.current = socket;

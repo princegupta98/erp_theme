@@ -72,7 +72,10 @@ async function streamSpeechAudio(text, onReady, onEnded, onError, cancelRef) {
     if (!window.MediaSource || !MediaSource.isTypeSupported('audio/mpeg')) {
         // Fallback: fetch full audio as base64
         const r = await fetch(`${API_BASE_URL}/api/tts`, {
-            method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ text }),
+            method: 'POST',
+            credentials: 'include',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ text }),
         });
         if (!r.ok) throw new Error(`TTS failed: ${r.status}`);
         const d = await r.json();
@@ -95,6 +98,7 @@ async function streamSpeechAudio(text, onReady, onEnded, onError, cancelRef) {
 
         const response = await fetch(`${API_BASE_URL}/api/tts/stream`, {
             method: 'POST',
+            credentials: 'include',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ text }),
         });
@@ -123,7 +127,10 @@ async function streamSpeechAudio(text, onReady, onEnded, onError, cancelRef) {
 // Kept for backward compat — used in the non-streaming fallback path
 async function fetchSpeechAudio(text) {
     const response = await fetch(`${API_BASE_URL}/api/tts`, {
-        method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ text }),
+        method: 'POST',
+        credentials: 'include',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ text }),
     });
     if (!response.ok) throw new Error(`TTS request failed with status ${response.status}`);
     const data = await response.json();

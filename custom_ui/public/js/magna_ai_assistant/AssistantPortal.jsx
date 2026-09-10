@@ -35,15 +35,62 @@ const normalizeTranscript = (value = '') => {
 };
 
 // Helper to resolve current Frappe Desk logged-in user and session cookie (sid)
+let _cachedFrappeContext = null;
+let _resolvingContextPromise = null;
+
+const resolveFrappeSessionContext = async () => {
+    if (_cachedFrappeContext && _cachedFrappeContext.sid) {
+        return _cachedFrappeContext;
+    }
+    if (_resolvingContextPromise) {
+        return _resolvingContextPromise;
+    }
+
+    _resolvingContextPromise = (async () => {
+        let user = window.frappe?.session?.user || 'Guest';
+        let sid = '';
+
+        // 1. In Frappe Desk, window.frappe.call passes session cookies same-origin to Frappe
+        if (window.frappe?.call) {
+            try {
+                const res = await window.frappe.call({
+                    method: 'custom_ui.api.auth.me',
+                });
+                if (res?.message?.user) {
+                    user = res.message.user.id || res.message.user.email || user;
+                    sid = res.message.user.sid || '';
+                }
+            } catch (err) {
+                console.warn('[Magma AI] Could not resolve session via custom_ui.api.auth.me:', err);
+            }
+        }
+
+        // 2. Fallback: document.cookie if available
+        if (!sid) {
+            try {
+                const parts = `; ${document.cookie}`.split('; sid=');
+                if (parts.length === 2) sid = parts.pop().split(';').shift();
+            } catch (e) {}
+        }
+
+        _cachedFrappeContext = { user, sid };
+        _resolvingContextPromise = null;
+        return _cachedFrappeContext;
+    })();
+
+    return _resolvingContextPromise;
+};
+
 const getFrappeSessionContext = () => {
+    if (_cachedFrappeContext && _cachedFrappeContext.sid) {
+        return _cachedFrappeContext;
+    }
     const user = window.frappe?.session?.user || 'Guest';
     let sid = '';
     try {
         const parts = `; ${document.cookie}`.split('; sid=');
         if (parts.length === 2) sid = parts.pop().split(';').shift();
-    } catch (e) {
-        // Fallback or cross-origin restrictions
-    }
+    } catch (e) {}
     return { user, sid };
 };
 
@@ -518,6 +565,10 @@ export default function AssistantPortal({ isOpen, onClose }) {
         resizeMessageInput(messageInputRef.current);
     }, [input, currentChatId]);
 
+    useEffect(() => {
+        resolveFrappeSessionContext();
+    }, []);
+
     // WebSpeech API implementation for reliable inline dictation
     const dictationRef = useRef(null);
 
@@ -612,7 +663,7 @@ export default function AssistantPortal({ isOpen, onClose }) {
         };
         resetInactivityTimer();
 
-        const { user: frappeUser, sid: frappeSid } = getFrappeSessionContext();
+        const { user: frappeUser, sid: frappeSid } = await resolveFrappeSessionContext();
         try {
             const response = await fetch(`${API_BASE_URL}/api/chat/stream`, {
                 method: 'POST',
@@ -763,7 +814,7 @@ export default function AssistantPortal({ isOpen, onClose }) {
 
                 for (let i = 0; i < attachedFiles.length; i++) {
                     const file = attachedFiles[i];
-                    const { user: frappeUser, sid: frappeSid } = getFrappeSessionContext();
+                    const { user: frappeUser, sid: frappeSid } = await resolveFrappeSessionContext();
                     const formData = new FormData();
                     formData.append('file', file);
                     formData.append('session_id', activeId);
@@ -1173,7 +1224,7 @@ export default function AssistantPortal({ isOpen, onClose }) {
         createVoiceChat(sessionId);
 
         const voiceParams = new URLSearchParams({ session_id: sessionId });
-        const { user: frappeUser, sid: frappeSid } = getFrappeSessionContext();
+        const { user: frappeUser, sid: frappeSid } = await resolveFrappeSessionContext();
         if (frappeUser) voiceParams.append('user_id', frappeUser);
         if (frappeSid) voiceParams.append('sid', frappeSid);
 

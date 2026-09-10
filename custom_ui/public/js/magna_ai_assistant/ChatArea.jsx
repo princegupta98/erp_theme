@@ -15,10 +15,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 // with "Failed to fetch". Use "localhost" if the backend runs on the
 // same machine as the browser, or the server's real IP/hostname if not.
 // ============================================================
-const API_BASE_URL = (typeof window !== 'undefined' && ['localhost', '127.0.0.1', 'magna.local'].includes(window.location.hostname))
-    ? 'http://localhost:8050'
-    : 'https://ai.tjdem.online';
-// const API_BASE_URL = 'http://localhost:8050';
+const API_BASE_URL = 'http://localhost:8050';
 // const API_BASE_URL = 'https://ai.tjdem.online';
 
 // Theme-adaptive categorical palette for chart series/slices. The first

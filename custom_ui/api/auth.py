@@ -183,7 +183,8 @@ def me() -> Dict[str, Any]:
             "email": user_doc.email,
             "roles": roles,
             "allowed_modules": allowed_modules,
-            "employee_profile": employee_info
+            "employee_profile": employee_info,
+            "sid": getattr(frappe.session, "sid", None) or (frappe.session.get("sid") if hasattr(frappe.session, "get") else None)
         }
     }
 

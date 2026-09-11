@@ -34,10 +34,74 @@ const normalizeTranscript = (value = '') => {
     return text ? text.charAt(0).toUpperCase() + text.slice(1) : '';
 };
 
-// This assistant is English-first. Do not inherit a device/browser locale
-// such as hi-IN because speech engines may then transliterate perfectly valid
-// English words into another script. en-IN keeps Indian-English pronunciation
-// support while still explicitly constraining recognition to English.
+// Helper to resolve current Frappe Desk logged-in user and session cookie (sid)
+let _cachedFrappeContext = null;
+let _resolvingContextPromise = null;
+
+const resolveFrappeSessionContext = async () => {
+    if (_cachedFrappeContext && _cachedFrappeContext.sid) {
+        return _cachedFrappeContext;
+    }
+    if (_resolvingContextPromise) {
+        return _resolvingContextPromise;
+    }
+
+    _resolvingContextPromise = (async () => {
+        let user = window.frappe?.session?.user || 'Guest';
+        let sid = '';
+        let csrfToken = window.frappe?.csrf_token || '';
+
+        // 1. In Frappe Desk, window.frappe.call passes session cookies same-origin to Frappe
+        if (window.frappe?.call) {
+            try {
+                const res = await window.frappe.call({
+                    method: 'custom_ui.api.auth.me',
+                });
+                if (res?.message?.user) {
+                    user = res.message.user.id || res.message.user.email || user;
+                    sid = res.message.user.sid || '';
+                    if (res.message.user.csrf_token || res.message.csrf_token) {
+                        csrfToken = res.message.user.csrf_token || res.message.csrf_token || csrfToken;
+                    }
+                }
+            } catch (err) {
+                console.warn('[Magma AI] Could not resolve session via custom_ui.api.auth.me:', err);
+            }
+        }
+
+        // 2. Fallback: document.cookie if available
+        if (!sid) {
+            try {
+                const parts = `; ${document.cookie}`.split('; sid=');
+                if (parts.length === 2) sid = parts.pop().split(';').shift();
+            } catch (e) {}
+        }
+        if (!csrfToken && window.frappe?.csrf_token) {
+            csrfToken = window.frappe.csrf_token;
+        }
+
+        _cachedFrappeContext = { user, sid, csrfToken };
+        _resolvingContextPromise = null;
+        return _cachedFrappeContext;
+    })();
+
+    return _resolvingContextPromise;
+};
+
+const getFrappeSessionContext = () => {
+    if (_cachedFrappeContext && _cachedFrappeContext.sid) {
+        return _cachedFrappeContext;
+    }
+    const user = window.frappe?.session?.user || 'Guest';
+    let sid = '';
+    let csrfToken = window.frappe?.csrf_token || '';
+    try {
+        const parts = `; ${document.cookie}`.split('; sid=');
+        if (parts.length === 2) sid = parts.pop().split(';').shift();
+    } catch (e) {}
+    return { user, sid, csrfToken };
+};
+
 const SPEECH_RECOGNITION_LANGUAGE = 'en-IN';
 
 const normalizeAssistantReply = (value = '') => {
@@ -509,6 +573,10 @@ export default function AssistantPortal({ isOpen, onClose }) {
         resizeMessageInput(messageInputRef.current);
     }, [input, currentChatId]);
 
+    useEffect(() => {
+        resolveFrappeSessionContext();
+    }, []);
+
     // WebSpeech API implementation for reliable inline dictation
     const dictationRef = useRef(null);
 
@@ -603,11 +671,23 @@ export default function AssistantPortal({ isOpen, onClose }) {
         };
         resetInactivityTimer();
 
+        const { user: frappeUser, sid: frappeSid, csrfToken: frappeCsrf } = await resolveFrappeSessionContext();
         try {
             const response = await fetch(`${API_BASE_URL}/api/chat/stream`, {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ message: userPrompt, session_id: chatId }),
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-Frappe-User': frappeUser,
+                    ...(frappeSid ? { 'X-Frappe-Session-Id': frappeSid } : {}),
+                    ...(frappeCsrf ? { 'X-Frappe-CSRF-Token': frappeCsrf } : {}),
+                },
+                body: JSON.stringify({
+                    message: userPrompt,
+                    session_id: chatId,
+                    user_id: frappeUser,
+                    sid: frappeSid,
+                    csrf_token: frappeCsrf,
+                }),
                 signal: controller.signal,
             });
 
@@ -743,12 +823,21 @@ export default function AssistantPortal({ isOpen, onClose }) {
 
                 for (let i = 0; i < attachedFiles.length; i++) {
                     const file = attachedFiles[i];
+                    const { user: frappeUser, sid: frappeSid, csrfToken: frappeCsrf } = await resolveFrappeSessionContext();
                     const formData = new FormData();
                     formData.append('file', file);
                     formData.append('session_id', activeId);
+                    if (frappeUser) formData.append('user_id', frappeUser);
+                    if (frappeSid) formData.append('sid', frappeSid);
+                    if (frappeCsrf) formData.append('csrf_token', frappeCsrf);
 
                     const res = await fetch(`${API_BASE_URL}/api/upload-document`, {
                         method: 'POST',
+                        headers: {
+                            'X-Frappe-User': frappeUser,
+                            ...(frappeSid ? { 'X-Frappe-Session-Id': frappeSid } : {}),
+                            ...(frappeCsrf ? { 'X-Frappe-CSRF-Token': frappeCsrf } : {}),
+                        },
                         body: formData,
                     });
 
@@ -1145,6 +1234,11 @@ export default function AssistantPortal({ isOpen, onClose }) {
         createVoiceChat(sessionId);
 
         const voiceParams = new URLSearchParams({ session_id: sessionId });
+        const { user: frappeUser, sid: frappeSid, csrfToken: frappeCsrf } = await resolveFrappeSessionContext();
+        if (frappeUser) voiceParams.append('user_id', frappeUser);
+        if (frappeSid) voiceParams.append('sid', frappeSid);
+        if (frappeCsrf) voiceParams.append('csrf_token', frappeCsrf);
+
         const hostUrl = API_BASE_URL.replace('http://', 'ws://').replace('https://', 'wss://') || `ws://${window.location.host || 'ai.tjdem.online'}`;
         const socket = new WebSocket(`${hostUrl}/ws/voice?${voiceParams.toString()}`);
         voiceSocketRef.current = socket;

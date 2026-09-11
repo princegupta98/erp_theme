@@ -681,7 +681,6 @@ export default function AssistantPortal({ isOpen, onClose }) {
                     ...(frappeSid ? { 'X-Frappe-Session-Id': frappeSid } : {}),
                     ...(frappeCsrf ? { 'X-Frappe-CSRF-Token': frappeCsrf } : {}),
                 },
-                credentials: 'include',
                 body: JSON.stringify({
                     message: userPrompt,
                     session_id: chatId,
@@ -834,7 +833,6 @@ export default function AssistantPortal({ isOpen, onClose }) {
 
                     const res = await fetch(`${API_BASE_URL}/api/upload-document`, {
                         method: 'POST',
-                        credentials: 'include',
                         headers: {
                             'X-Frappe-User': frappeUser,
                             ...(frappeSid ? { 'X-Frappe-Session-Id': frappeSid } : {}),

@@ -8,6 +8,7 @@ Location: apps/custom_ui/custom_ui/api/auth.py
 """
 
 import frappe
+import frappe.sessions
 from frappe import _
 from frappe.auth import LoginManager
 from typing import Dict, Any, List, Optional
@@ -177,7 +178,6 @@ def me() -> Dict[str, Any]:
 
     csrf_token = None
     try:
-        import frappe.sessions
         csrf_token = frappe.sessions.get_csrf_token()
     except Exception:
         csrf_token = getattr(getattr(getattr(frappe.local, "session", None), "data", None), "csrf_token", None)

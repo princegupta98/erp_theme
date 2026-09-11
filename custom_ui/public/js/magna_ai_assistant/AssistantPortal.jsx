@@ -49,6 +49,7 @@ const resolveFrappeSessionContext = async () => {
     _resolvingContextPromise = (async () => {
         let user = window.frappe?.session?.user || 'Guest';
         let sid = '';
+        let csrfToken = window.frappe?.csrf_token || '';
 
         // 1. In Frappe Desk, window.frappe.call passes session cookies same-origin to Frappe
         if (window.frappe?.call) {
@@ -59,6 +60,9 @@ const resolveFrappeSessionContext = async () => {
                 if (res?.message?.user) {
                     user = res.message.user.id || res.message.user.email || user;
                     sid = res.message.user.sid || '';
+                    if (res.message.user.csrf_token || res.message.csrf_token) {
+                        csrfToken = res.message.user.csrf_token || res.message.csrf_token || csrfToken;
+                    }
                 }
             } catch (err) {
                 console.warn('[Magma AI] Could not resolve session via custom_ui.api.auth.me:', err);
@@ -72,8 +76,11 @@ const resolveFrappeSessionContext = async () => {
                 if (parts.length === 2) sid = parts.pop().split(';').shift();
             } catch (e) {}
         }
+        if (!csrfToken && window.frappe?.csrf_token) {
+            csrfToken = window.frappe.csrf_token;
+        }
 
-        _cachedFrappeContext = { user, sid };
+        _cachedFrappeContext = { user, sid, csrfToken };
         _resolvingContextPromise = null;
         return _cachedFrappeContext;
     })();
@@ -87,11 +94,12 @@ const getFrappeSessionContext = () => {
     }
     const user = window.frappe?.session?.user || 'Guest';
     let sid = '';
+    let csrfToken = window.frappe?.csrf_token || '';
     try {
         const parts = `; ${document.cookie}`.split('; sid=');
         if (parts.length === 2) sid = parts.pop().split(';').shift();
     } catch (e) {}
-    return { user, sid };
+    return { user, sid, csrfToken };
 };
 
 const SPEECH_RECOGNITION_LANGUAGE = 'en-IN';
@@ -663,7 +671,7 @@ export default function AssistantPortal({ isOpen, onClose }) {
         };
         resetInactivityTimer();
 
-        const { user: frappeUser, sid: frappeSid } = await resolveFrappeSessionContext();
+        const { user: frappeUser, sid: frappeSid, csrfToken: frappeCsrf } = await resolveFrappeSessionContext();
         try {
             const response = await fetch(`${API_BASE_URL}/api/chat/stream`, {
                 method: 'POST',
@@ -671,6 +679,7 @@ export default function AssistantPortal({ isOpen, onClose }) {
                     'Content-Type': 'application/json',
                     'X-Frappe-User': frappeUser,
                     ...(frappeSid ? { 'X-Frappe-Session-Id': frappeSid } : {}),
+                    ...(frappeCsrf ? { 'X-Frappe-CSRF-Token': frappeCsrf } : {}),
                 },
                 credentials: 'include',
                 body: JSON.stringify({
@@ -678,6 +687,7 @@ export default function AssistantPortal({ isOpen, onClose }) {
                     session_id: chatId,
                     user_id: frappeUser,
                     sid: frappeSid,
+                    csrf_token: frappeCsrf,
                 }),
                 signal: controller.signal,
             });
@@ -814,12 +824,13 @@ export default function AssistantPortal({ isOpen, onClose }) {
 
                 for (let i = 0; i < attachedFiles.length; i++) {
                     const file = attachedFiles[i];
-                    const { user: frappeUser, sid: frappeSid } = await resolveFrappeSessionContext();
+                    const { user: frappeUser, sid: frappeSid, csrfToken: frappeCsrf } = await resolveFrappeSessionContext();
                     const formData = new FormData();
                     formData.append('file', file);
                     formData.append('session_id', activeId);
                     if (frappeUser) formData.append('user_id', frappeUser);
                     if (frappeSid) formData.append('sid', frappeSid);
+                    if (frappeCsrf) formData.append('csrf_token', frappeCsrf);
 
                     const res = await fetch(`${API_BASE_URL}/api/upload-document`, {
                         method: 'POST',
@@ -827,6 +838,7 @@ export default function AssistantPortal({ isOpen, onClose }) {
                         headers: {
                             'X-Frappe-User': frappeUser,
                             ...(frappeSid ? { 'X-Frappe-Session-Id': frappeSid } : {}),
+                            ...(frappeCsrf ? { 'X-Frappe-CSRF-Token': frappeCsrf } : {}),
                         },
                         body: formData,
                     });
@@ -1224,9 +1236,10 @@ export default function AssistantPortal({ isOpen, onClose }) {
         createVoiceChat(sessionId);
 
         const voiceParams = new URLSearchParams({ session_id: sessionId });
-        const { user: frappeUser, sid: frappeSid } = await resolveFrappeSessionContext();
+        const { user: frappeUser, sid: frappeSid, csrfToken: frappeCsrf } = await resolveFrappeSessionContext();
         if (frappeUser) voiceParams.append('user_id', frappeUser);
         if (frappeSid) voiceParams.append('sid', frappeSid);
+        if (frappeCsrf) voiceParams.append('csrf_token', frappeCsrf);
 
         const hostUrl = API_BASE_URL.replace('http://', 'ws://').replace('https://', 'wss://') || `ws://${window.location.host || 'ai.tjdem.online'}`;
         const socket = new WebSocket(`${hostUrl}/ws/voice?${voiceParams.toString()}`);

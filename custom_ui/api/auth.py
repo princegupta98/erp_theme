@@ -175,6 +175,13 @@ def me() -> Dict[str, Any]:
     except Exception:
         pass
 
+    csrf_token = None
+    try:
+        import frappe.sessions
+        csrf_token = frappe.sessions.get_csrf_token()
+    except Exception:
+        csrf_token = getattr(getattr(getattr(frappe.local, "session", None), "data", None), "csrf_token", None)
+
     return {
         "status": "Success",
         "user": {
@@ -184,8 +191,10 @@ def me() -> Dict[str, Any]:
             "roles": roles,
             "allowed_modules": allowed_modules,
             "employee_profile": employee_info,
-            "sid": getattr(frappe.session, "sid", None) or (frappe.session.get("sid") if hasattr(frappe.session, "get") else None)
-        }
+            "sid": getattr(frappe.session, "sid", None) or (frappe.session.get("sid") if hasattr(frappe.session, "get") else None),
+            "csrf_token": csrf_token
+        },
+        "csrf_token": csrf_token
     }
 
 

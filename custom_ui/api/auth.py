@@ -8,6 +8,7 @@ Location: apps/custom_ui/custom_ui/api/auth.py
 """
 
 import frappe
+import frappe.sessions
 from frappe import _
 from frappe.auth import LoginManager
 from typing import Dict, Any, List, Optional
@@ -175,6 +176,12 @@ def me() -> Dict[str, Any]:
     except Exception:
         pass
 
+    csrf_token = None
+    try:
+        csrf_token = frappe.sessions.get_csrf_token()
+    except Exception:
+        csrf_token = getattr(getattr(getattr(frappe.local, "session", None), "data", None), "csrf_token", None)
+
     return {
         "status": "Success",
         "user": {
@@ -183,8 +190,11 @@ def me() -> Dict[str, Any]:
             "email": user_doc.email,
             "roles": roles,
             "allowed_modules": allowed_modules,
-            "employee_profile": employee_info
-        }
+            "employee_profile": employee_info,
+            "sid": getattr(frappe.session, "sid", None) or (frappe.session.get("sid") if hasattr(frappe.session, "get") else None),
+            "csrf_token": csrf_token
+        },
+        "csrf_token": csrf_token
     }
 
 

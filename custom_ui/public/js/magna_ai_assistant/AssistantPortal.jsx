@@ -3,7 +3,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Sidebar from './Sidebar';
 import BentoWelcome from './BentoWelcome';
 import ChatArea, { ToolActivityPanel, ChartBlock, FormattedMarkdownText, EmbeddedBase64Image, getCleanTextAndChart, API_BASE_URL } from './ChatArea';
-import { useVoiceSession } from './useVoiceSession';
 import OrbController from './orb/OrbController.js';
 import './orb.css';
 

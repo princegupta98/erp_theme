@@ -15,8 +15,14 @@ import { motion, AnimatePresence } from 'framer-motion';
 // with "Failed to fetch". Use "localhost" if the backend runs on the
 // same machine as the browser, or the server's real IP/hostname if not.
 // ============================================================
-const API_BASE_URL = 'http://localhost:8050';
-// const API_BASE_URL = 'https://ai.tjdem.online';
+// Auto-fallback: if the page itself is being served from a local/dev host,
+// talk to the backend running on this same machine instead of prod. Saves
+// having to hand-edit this line (and accidentally commit the edit) every
+// time you switch between local dev and prod.
+const _LOCAL_HOSTS = ['localhost', '127.0.0.1', 'magnaerp.local'];
+const API_BASE_URL = _LOCAL_HOSTS.includes(window.location.hostname)
+    ? 'http://localhost:8050'
+    : 'https://ai.tjdem.online';
 
 // Theme-adaptive categorical palette for chart series/slices. The first
 // color always follows the active theme's primary color via color-mix();
@@ -69,7 +75,6 @@ async function streamSpeechAudio(text, onReady, onEnded, onError, cancelRef) {
         // Fallback: fetch full audio as base64
         const r = await fetch(`${API_BASE_URL}/api/tts`, {
             method: 'POST',
-            credentials: 'include',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ text }),
         });
@@ -94,7 +99,6 @@ async function streamSpeechAudio(text, onReady, onEnded, onError, cancelRef) {
 
         const response = await fetch(`${API_BASE_URL}/api/tts/stream`, {
             method: 'POST',
-            credentials: 'include',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ text }),
         });
@@ -124,7 +128,6 @@ async function streamSpeechAudio(text, onReady, onEnded, onError, cancelRef) {
 async function fetchSpeechAudio(text) {
     const response = await fetch(`${API_BASE_URL}/api/tts`, {
         method: 'POST',
-        credentials: 'include',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ text }),
     });
